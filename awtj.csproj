@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,7 +56,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controles\SubControles\UcFormEmpresa.xaml.cs">
+      <DependentUpon>UcFormEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SubControles\UcFormPessoa.xaml.cs">
+      <DependentUpon>UcFormPessoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\UcRegistrar.xaml.cs">
+      <DependentUpon>UcRegistrar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.cs" />
+    <Compile Include="ListaEmpresas.cs" />
+    <Compile Include="ListaPessoas.cs" />
+    <Compile Include="Pessoa.cs" />
+    <Compile Include="Usuario.cs" />
+    <Page Include="Confirmar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\SubControles\UcFormEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\SubControles\UcFormPessoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controles\UcLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\UcRegistrar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
