@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:awtj.Controles.SubControles"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Width="395" Height="418">
+    <Border Margin="0" BorderBrush="White" CornerRadius="3" BorderThickness="1">
+        <Grid>
+            <TextBlock TextWrapping="Wrap" Text="Nome de Usuário" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,10,10,0" TextAlignment="Center"/>
+            <TextBox Height="23" Margin="30,33,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Senha" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,61,10,0" TextAlignment="Center"/>
+            <TextBlock TextWrapping="Wrap" Text="Confirme a Senha" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,112,10,0" TextAlignment="Center"/>
+            <PasswordBox Margin="30,84,30,0" VerticalAlignment="Top" Height="23"/>
+            <PasswordBox Margin="30,135,30,0" VerticalAlignment="Top" Height="23"/>
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,163,10,0" TextAlignment="Center"><Run Text="Nome"/><Run Text=" Fantasia"/></TextBlock>
+            <TextBox Height="23" Margin="30,186,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,214,10,0" TextAlignment="Center"/>
+            <TextBox Height="23" Margin="30,237,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Endereço" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,265,10,0" TextAlignment="Center"/>
+            <TextBox Height="23" Margin="30,288,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,316,10,0" TextAlignment="Center"/>
+            <TextBox Height="23" Margin="30,339,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap" Text="CNPJ" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,367,10,0" TextAlignment="Center"/>
+            <TextBox Height="23" Margin="30,385,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        </Grid>
+    </Border>
 </UserControl>

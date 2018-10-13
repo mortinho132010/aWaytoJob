@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using awtj.Controles.SubControles;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using awtj.Controles.SubControles;
 
 namespace awtj.Controles {
     /// <summary>
@@ -26,11 +13,22 @@ namespace awtj.Controles {
             ComboUser.SelectedIndex = 0;
         }
 
+        public void FormPessoa() {
+            UcFormPessoa pes = new UcFormPessoa();
+            ConteinerForm.Children.Add(pes);
+        }
+
+        public void FormEmpresa() {
+            UcFormEmpresa emp = new UcFormEmpresa();
+            ConteinerForm.Children.Add(emp);
+        }
         private void ComboUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if(ComboUser.SelectedIndex == 0) {
+            if (ComboUser.SelectedIndex == 0) {
                 ConteinerForm.Children.Clear();
-                UcFormPessoa pes = new UcFormPessoa();
-                ConteinerForm.Children.Add(pes);
+                FormPessoa();
+            } else if (ComboUser.SelectedIndex == 1) {
+                ConteinerForm.Children.Clear();
+                FormEmpresa();
             }
         }
     }

@@ -62,6 +62,9 @@
     <Compile Include="Controles\SubControles\UcFormPessoa.xaml.cs">
       <DependentUpon>UcFormPessoa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\UcRedefinir.xaml.cs">
+      <DependentUpon>UcRedefinir.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\UcRegistrar.xaml.cs">
       <DependentUpon>UcRegistrar.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\UcLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\UcRedefinir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
