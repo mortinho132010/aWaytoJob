@@ -8,9 +8,7 @@ namespace awtj.Controles {
     public partial class UcRegistrar : UserControl {
         public UcRegistrar() {
             InitializeComponent();
-            UcFormPessoa pes = new UcFormPessoa();
-            ConteinerForm.Children.Add(pes);
-            ComboUser.SelectedIndex = 0;
+            FormPessoa();
         }
 
         public void FormPessoa() {
@@ -22,7 +20,8 @@ namespace awtj.Controles {
             UcFormEmpresa emp = new UcFormEmpresa();
             ConteinerForm.Children.Add(emp);
         }
-        private void ComboUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        private void ComboUser_DropDownClosed(object sender, System.EventArgs e) {
             if (ComboUser.SelectedIndex == 0) {
                 ConteinerForm.Children.Clear();
                 FormPessoa();

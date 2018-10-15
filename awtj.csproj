@@ -73,6 +73,7 @@
     <Compile Include="ListaPessoas.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="XmlMetodos.cs" />
     <Page Include="Confirmar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

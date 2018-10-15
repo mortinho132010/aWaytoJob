@@ -21,7 +21,7 @@
                 <DropShadowEffect/>
             </TextBlock.Effect>
         </TextBlock>
-        <ComboBox x:Name="ComboUser" Margin="171,58,35,0" VerticalAlignment="Top" SelectionChanged="ComboUser_SelectionChanged">
+        <ComboBox x:Name="ComboUser" Margin="171,58,35,0" VerticalAlignment="Top" SelectedIndex="0" DropDownClosed="ComboUser_DropDownClosed">
             <ComboBoxItem Content="Pessoa"/>
             <ComboBoxItem Content="Empresa"/>
         </ComboBox>

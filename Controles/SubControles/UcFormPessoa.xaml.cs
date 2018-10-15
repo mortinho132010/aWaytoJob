@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace awtj.Controles.SubControles {
     /// <summary>
@@ -20,6 +7,35 @@ namespace awtj.Controles.SubControles {
     public partial class UcFormPessoa : UserControl {
         public UcFormPessoa() {
             InitializeComponent();
+        }
+
+        public string TextBoxUsuario() {
+            return TextUsuario.Text;
+        }
+        public string TextSenha() {
+            return TextPassSenha.Password;
+        }
+        public string TextConfirma() {
+            return TextPassConfirma.Password;
+        }
+        public string TextBoxNome() {
+            return TextNome.Text;
+        }
+        public string TextBoxTelefone() {
+            return TextTelefone.Text;
+        }
+        public string TextBoxEndereco() {
+            return TextEndereco.Text;
+        }
+        public string TextBoxEmail() {
+            return TextEmail.Text;
+        }
+        public string RadioSelected() {
+            if (RadioM.IsChecked == true) {
+                return "masculino";
+            } else {
+                return "feminino";
+            }
         }
     }
 }
