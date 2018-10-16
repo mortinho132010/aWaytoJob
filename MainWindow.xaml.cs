@@ -1,4 +1,5 @@
 ﻿using awtj.Controles;
+using awtj.Controles.SubControles;
 using System.Windows;
 using System.Windows.Controls;
 namespace awtj {
@@ -6,38 +7,47 @@ namespace awtj {
     /// Interação lógica para MainWindow.xam
     /// </summary>
     public partial class MainWindow : Window {
-        UcLogin log;
-        UcRegistrar reg;
-        UcRedefinir red;
+
+        private UcLogin log;
+        private UcRegistrar reg;
+        private UcRedefinir red;
+        private ListaPessoas listaPessoas;
+        private ListaEmpresas listaEmpresas;
+        private XmlMetodos xmlMet;
+
         public MainWindow() {
             InitializeComponent();
             reg = new UcRegistrar();
             log = new UcLogin();
             red = new UcRedefinir();
+            listaPessoas = new ListaPessoas();
+            listaEmpresas = new ListaEmpresas();
+            xmlMet = new XmlMetodos();
             conteiner.Children.Add(log);
         }
 
-        public void formLogin() {
+        public void FormLogin() {
             conteiner.Children.Clear();
             conteiner.Children.Add(log);
         }
 
-        public void formRegistrar() {
+        public void FormRegistrar() {
             conteiner.Children.Clear();
             conteiner.Children.Add(reg);
         }
 
-        public void formRedefinir() {
+        public void FormRedefinir() {
             conteiner.Children.Clear();
             conteiner.Children.Add(red);
         }
+
         public void AlinharBotoes(Button bt1, double left, double top, double right, double botton) {
             bt1.Margin = new Thickness(left, top, right, botton);
         }
 
         private void RegButton_Click(object sender, RoutedEventArgs e) {
             if (RegButton.Content.Equals("Registrar-se")) {
-                formRegistrar();
+                FormRegistrar();
                 LabelReg.Content = "";
                 LabelRes.Content = "";
                 RegButton.Content = "Concluir";
@@ -45,9 +55,19 @@ namespace awtj {
                 AlinharBotoes(RegButton, 158, 11, 0, 0);
                 AlinharBotoes(ResButton, 158, 54, 0, 0);
             } else if (RegButton.Content.Equals("Concluir")) {
-
+                if (reg.RadioOp == 0) {
+                    UcFormPessoa x = reg.ObjPessoa();
+                    listaPessoas.Cadastrar(x.TextBoxUsuario(), x.TextConfirma(), x.TextBoxNome(),
+                        x.TextBoxTelefone(), x.TextBoxEndereco(), x.TextBoxEmail(), x.RadioSelected());
+                    xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                } else {
+                    UcFormEmpresa x = reg.ObjEmpresa();
+                    listaEmpresas.Cadastrar(x.TextBoxUsuario(), x.TextPassConfirma(), x.TextBoxNome(),
+                        x.TextBoxTelefone(), x.TextBoxEndereco(), x.TextBoxEmail(), x.TextBoxCnpj());
+                    xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                }
             } else {
-                formLogin();
+                FormLogin();
                 LabelReg.Content = "Ainda não possui uma conta para acessar?";
                 LabelRes.Content = "Não se Lembra de sua senha? Obtenha uma nova:";
                 RegButton.Content = "Registrar-se";
@@ -59,7 +79,7 @@ namespace awtj {
 
         private void ResButton_Click(object sender, RoutedEventArgs e) {
             if (ResButton.Content.Equals("Redefinir")) {
-                formRedefinir();
+                FormRedefinir();
                 LabelReg.Content = "";
                 LabelRes.Content = "";
                 RegButton.Content = "Voltar";
@@ -69,7 +89,7 @@ namespace awtj {
             } else if (ResButton.Content.Equals("Concluir")) {
 
             } else {
-                formLogin();
+                FormLogin();
                 LabelReg.Content = "Ainda não possui uma conta para acessar?";
                 LabelRes.Content = "Não se Lembra de sua senha? Obtenha uma nova:";
                 RegButton.Content = "Registrar-se";

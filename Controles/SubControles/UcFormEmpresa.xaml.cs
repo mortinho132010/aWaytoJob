@@ -21,5 +21,30 @@ namespace awtj.Controles.SubControles {
         public UcFormEmpresa() {
             InitializeComponent();
         }
+
+        public string TextBoxUsuario() {
+            return TextUsuario.Text;
+        }
+        public string TextPassSenha() {
+            return TextSenha.Password;
+        }
+        public string TextPassConfirma() {
+            return TextConfirma.Password;
+        }
+        public string TextBoxNome() {
+            return TextNome.Text;
+        }
+        public string TextBoxTelefone() {
+            return TextTelefone.Text;
+        }
+        public string TextBoxEndereco() {
+            return TextEndereco.Text;
+        }
+        public string TextBoxEmail() {
+            return TextEmail.Text;
+        }
+        public string TextBoxCnpj() {
+            return TextCnpj.Text;
+        }
     }
 }

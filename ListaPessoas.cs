@@ -25,6 +25,7 @@ namespace awtj {
             int count = 0;
             while (aux != null) {
                 count++;
+                aux = aux.Next;
             }
             return count;
         }

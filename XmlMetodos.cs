@@ -4,17 +4,10 @@ using System.Xml;
 
 namespace awtj {
     class XmlMetodos {
-        ListaPessoas pesList;
-        ListaEmpresas empList;
 
-        public XmlMetodos() {
-            pesList = new ListaPessoas();
-            empList = new ListaEmpresas();
-        }
-
-        public void LerXml() {
+        public void LerXml(ListaPessoas pesList, ListaEmpresas empList) {
             XmlDocument xml = new XmlDocument();
-            xml.Load(@"~\Contas\dados.xml");
+            xml.Load(@".\Contas\dados.xml");
             XmlNodeList pes, emp;
             pes = xml.GetElementsByTagName("PESSOAS");
             emp = xml.GetElementsByTagName("EMPRESAS");
@@ -30,9 +23,9 @@ namespace awtj {
             }
         }
 
-        public void GuardarXml() {
+        public void GuardarXml(ListaPessoas pesList, ListaEmpresas empList) {
             try {
-                XmlTextWriter dxml = new XmlTextWriter(@"~\Contas\xml", null);
+                XmlTextWriter dxml = new XmlTextWriter(@".\Contas\dados.xml", null);
                 string[,] pessoas = pesList.getAll();
                 string[,] empresas = empList.getAll();
                 dxml.WriteStartDocument();
@@ -62,6 +55,8 @@ namespace awtj {
                     dxml.WriteElementString("genero", empresas[i, 6]);
                     dxml.WriteEndElement();
                 }
+                dxml.WriteFullEndElement();
+                dxml.Close();
             } catch (Exception ex) {
                 MessageBox.Show("Erro: " + ex.Message, "Erro!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
