@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 namespace awtj {
-    class ListaEmpresas {
+    public class ListaEmpresas {
         private Empresa head, tail;
         public ListaEmpresas() {
             head = null;

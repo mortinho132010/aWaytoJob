@@ -47,6 +47,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="VIBlend.WPF.Editors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5f568d4f9cd901f1, processorArchitecture=MSIL" />
+    <Reference Include="VIBlend.WPF.Utilities, Version=5.0.0.0, Culture=neutral, PublicKeyToken=d5be5ade8eba591d, processorArchitecture=MSIL" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -56,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientWindow.xaml.cs">
+      <DependentUpon>ClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\SubControles\UcFormEmpresa.xaml.cs">
       <DependentUpon>UcFormEmpresa.xaml</DependentUpon>
     </Compile>
@@ -72,8 +77,13 @@
     <Compile Include="ListaEmpresas.cs" />
     <Compile Include="ListaPessoas.cs" />
     <Compile Include="Pessoa.cs" />
+    <Compile Include="Restricoes.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="XmlMetodos.cs" />
+    <Page Include="ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Confirmar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

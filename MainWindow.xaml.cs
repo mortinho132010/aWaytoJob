@@ -17,11 +17,12 @@ namespace awtj {
 
         public MainWindow() {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             reg = new UcRegistrar();
             log = new UcLogin();
             red = new UcRedefinir();
-            listaPessoas = new ListaPessoas();
-            listaEmpresas = new ListaEmpresas();
+            listaPessoas = log.GetListPessoa();
+            listaEmpresas = log.GetListEmpresa();
             xmlMet = new XmlMetodos();
             conteiner.Children.Add(log);
         }

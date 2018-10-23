@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="awtj.Controles.SubControles.UcFormEmpresa"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:awtj.Controles.SubControles"
+             xmlns:viblendEditors="clr-namespace:VIBlend.WPF.Controls;assembly=VIBlend.WPF.Editors" x:Class="awtj.Controles.SubControles.UcFormEmpresa"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Width="395" Height="418">
     <Border Margin="0" BorderBrush="White" CornerRadius="3" BorderThickness="1">
@@ -16,14 +17,14 @@
             <TextBlock TextWrapping="Wrap" Text="Endereço" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,265,10,0" TextAlignment="Center"/>
             <TextBlock TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,316,10,0" TextAlignment="Center"/>
             <TextBlock TextWrapping="Wrap" Text="CNPJ" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,367,10,0" TextAlignment="Center"/>
-            <TextBox x:Name="TextUsuario" Height="23" Margin="30,33,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <PasswordBox x:Name="TextSenha" Margin="30,84,30,0" VerticalAlignment="Top" Height="23"/>
-            <PasswordBox x:Name="TextConfirma" Margin="30,135,30,0" VerticalAlignment="Top" Height="23"/>
-            <TextBox x:Name="TextNome" Height="23" Margin="30,186,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox x:Name="TextTelefone" Height="23" Margin="30,237,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox x:Name="TextEndereco" Height="23" Margin="30,288,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox x:Name="TextEmail" Height="23" Margin="30,339,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox x:Name="TextCnpj" Height="23" Margin="30,385,30,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBox x:Name="TextUsuario" Height="23" Margin="30,33,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextUsuario_PreviewKeyDown"/>
+            <PasswordBox x:Name="TextSenha" Margin="30,84,30,0" VerticalAlignment="Top" Height="23" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextSenha_PreviewKeyDown"/>
+            <PasswordBox x:Name="TextConfirma" Margin="30,135,30,0" VerticalAlignment="Top" Height="23" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextConfirma_PreviewKeyDown"/>
+            <TextBox x:Name="TextNome" Height="23" Margin="30,186,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextNome_PreviewKeyDown"/>
+            <TextBox x:Name="TextEndereco" Height="23" Margin="30,288,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextEndereco_PreviewKeyDown"/>
+            <TextBox x:Name="TextEmail" Height="23" Margin="30,339,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextEmail_PreviewKeyDown"/>
+            <viblendEditors:MaskEditor x:Name="TextTelefone" Height="23" Margin="30,236,30,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" BorderBrush="#FFABADB3" Mask="(99)99999-9999" FontFamily="Calibri" FontSize="16"/>
+            <viblendEditors:MaskEditor x:Name="TextCnpj" HorizontalAlignment="Left" Height="24" Margin="30,385,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="333" BorderBrush="#FFABADB3" Mask="99.999.999/9999-99" FontFamily="Calibri" FontSize="16"/>
         </Grid>
     </Border>
 </UserControl>

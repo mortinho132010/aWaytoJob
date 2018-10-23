@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
 namespace awtj {
-    class ListaPessoas {
+    public class ListaPessoas {
         private Pessoa head, tail;
         public ListaPessoas() {
             head = null;
