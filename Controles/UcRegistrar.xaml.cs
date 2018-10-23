@@ -6,29 +6,41 @@ namespace awtj.Controles {
     /// Interação lógica para UcRegistrar.xam
     /// </summary>
     public partial class UcRegistrar : UserControl {
+        public int RadioOp { private set; get; }
+        private UcFormPessoa pes;
+        private UcFormEmpresa emp;
         public UcRegistrar() {
             InitializeComponent();
-            UcFormPessoa pes = new UcFormPessoa();
-            ConteinerForm.Children.Add(pes);
-            ComboUser.SelectedIndex = 0;
+            pes = new UcFormPessoa();
+            emp = new UcFormEmpresa();
+            FormPessoa();
+            RadioOp = 0;
         }
 
+        public UcFormPessoa ObjPessoa() {
+            return pes;
+        }
+
+        public UcFormEmpresa ObjEmpresa() {
+            return emp;
+        }
         public void FormPessoa() {
-            UcFormPessoa pes = new UcFormPessoa();
             ConteinerForm.Children.Add(pes);
         }
 
         public void FormEmpresa() {
-            UcFormEmpresa emp = new UcFormEmpresa();
             ConteinerForm.Children.Add(emp);
         }
-        private void ComboUser_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        private void ComboUser_DropDownClosed(object sender, System.EventArgs e) {
             if (ComboUser.SelectedIndex == 0) {
                 ConteinerForm.Children.Clear();
                 FormPessoa();
+                RadioOp = 0;
             } else if (ComboUser.SelectedIndex == 1) {
                 ConteinerForm.Children.Clear();
                 FormEmpresa();
+                RadioOp = 1;
             }
         }
     }
