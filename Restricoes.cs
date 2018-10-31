@@ -1,6 +1,5 @@
 ﻿using System.Media;
 using System.Text.RegularExpressions;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace awtj {
@@ -38,7 +37,7 @@ namespace awtj {
             string emailRegex = string.Format("{0}{1}",
                 @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
-            if (text.Length <= 30) {
+            if (text.Length <= length) {
                 try {
                     valido = Regex.IsMatch(text, emailRegex);
                 } catch (RegexMatchTimeoutException) {
@@ -49,6 +48,17 @@ namespace awtj {
                 SystemSounds.Beep.Play();
             }
             return valido;
+        }
+
+        public void RestrNumero(string text, int length, KeyEventArgs e) {
+            int dig = (int) e.Key;
+            if (dig != 3 && dig != 2 && dig != 23 && dig != 25 && dig < 34 || dig > 43 && dig < 74 || dig > 83) {
+                e.Handled = true;
+                SystemSounds.Beep.Play();
+            }else if(text.Length >= length && e.Key != Key.Back && e.Key != Key.Tab && e.Key != Key.Left && e.Key != Key.Right) {
+                e.Handled = true;
+                SystemSounds.Beep.Play();
+            }
         }
     }
 }

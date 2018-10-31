@@ -17,7 +17,7 @@ namespace awtj {
 
         public MainWindow() {
             InitializeComponent();
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             reg = new UcRegistrar();
             log = new UcLogin();
             red = new UcRedefinir();
@@ -58,14 +58,26 @@ namespace awtj {
             } else if (RegButton.Content.Equals("Concluir")) {
                 if (reg.RadioOp == 0) {
                     UcFormPessoa x = reg.ObjPessoa();
-                    listaPessoas.Cadastrar(x.TextBoxUsuario(), x.TextConfirma(), x.TextBoxNome(),
-                        x.TextBoxTelefone(), x.TextBoxEndereco(), x.TextBoxEmail(), x.RadioSelected());
-                    xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                    if (x.BuscarCep(x.TextBoxCEP()) == true && x.VerificarCampos() == true && x.VerificarSenhas() == true) {
+                        listaPessoas.Cadastrar(x.TextBoxUsuario(), x.TextConfirma(), x.TextBoxNome(), "",
+                            x.TextBoxTelefone(), "", "", x.TextBoxCEP(), x.Cidade, x.Estado, x.Endereco,
+                            "", x.Bairro, "", x.TextBoxEmail(), x.RadioSelected(), @".\Images\SystemIcons\UserDefault.jpg", "", "");
+                        xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                    } else {
+                        MessageBox.Show("Não deixe nenhum campo em branco, e verifique se o CEP é válido",
+                            "Verifique os campos!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 } else {
                     UcFormEmpresa x = reg.ObjEmpresa();
-                    listaEmpresas.Cadastrar(x.TextBoxUsuario(), x.TextPassConfirma(), x.TextBoxNome(),
-                        x.TextBoxTelefone(), x.TextBoxEndereco(), x.TextBoxEmail(), x.TextBoxCnpj());
-                    xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                    if (x.BuscarCep(x.TextBoxCEP()) == true && x.VerificarCampos() == true && x.VerificarSenhas() == true) {
+                        listaEmpresas.Cadastrar(x.TextBoxUsuario(), x.TextPassConfirma(), x.TextBoxNome(),
+                            x.TextBoxTelefone(), "", "", x.TextBoxCEP(), x.Cidade, x.Estado, x.Endereco, "",
+                            x.Bairro, "", x.TextBoxEmail(), x.TextBoxCnpj(), @".\Images\SystemIcons\UserDefault.jpg", "", "");
+                        xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                    } else {
+                        MessageBox.Show("Não deixe nenhum campo em branco, e verifique se o CEP é válido",
+                            "Verifique os campos!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             } else {
                 FormLogin();

@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Correios;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace awtj.Controles.SubControles {
     /// <summary>
@@ -19,6 +8,10 @@ namespace awtj.Controles.SubControles {
     /// </summary>
     public partial class UcFormEmpresa : UserControl {
         Restricoes rest;
+        public string Cidade { set; get; }
+        public string Estado { set; get; }
+        public string Endereco { set; get; }
+        public string Bairro { set; get; }
         public UcFormEmpresa() {
             InitializeComponent();
             rest = new Restricoes();
@@ -39,14 +32,66 @@ namespace awtj.Controles.SubControles {
         public string TextBoxTelefone() {
             return TextTelefone.Text;
         }
-        public string TextBoxEndereco() {
-            return TextEndereco.Text;
+        public string TextBoxCEP() {
+            return TextCEP.Text;
         }
         public string TextBoxEmail() {
             return TextEmail.Text;
         }
         public string TextBoxCnpj() {
             return TextCnpj.Text;
+        }
+
+        public bool VerificarCampos() {
+            if (TextBoxUsuario() == "" || TextPassSenha() == "" || TextPassConfirma() == "" || TextBoxNome() == "" ||
+                TextBoxTelefone() == "" || TextBoxCEP() == "" || TextBoxEmail() == "") {
+                return false;
+            } else return true;
+        }
+        public bool VerificarSenhas() {
+            if (TextPassSenha().Equals(TextPassConfirma())) {
+                return true;
+            } else return false;
+        }
+
+        public bool BuscarCep(string cep) {
+            bool status = false;
+            if (int.TryParse(cep, out int aux) == true) {
+                CorreiosApi api = new CorreiosApi();
+                try {
+                    var res = api.consultaCEP(cep);
+                    if (res.cidade != null) {
+                        Cidade = res.cidade;
+                        Bairro = res.bairro;
+                        Endereco = res.end;
+                        Estado = res.uf;
+                        labVerifica.Content = "Status: OK";
+                        status = true;
+                    } else {
+                        labVerifica.Content = "Status: INVALIDO";
+                        Cidade = "";
+                        Bairro = "";
+                        Endereco = "";
+                        Estado = "";
+                        status = false;
+                    }
+                } catch (System.ServiceModel.FaultException e) {
+                    labVerifica.Content = "Status: INVALIDO";
+                    Cidade = "";
+                    Bairro = "";
+                    Endereco = "";
+                    Estado = "";
+                    status = false;
+                }
+            } else {
+                labVerifica.Content = "Status: INVALIDO";
+                Cidade = "";
+                Bairro = "";
+                Endereco = "";
+                Estado = "";
+                status = false;
+            }
+            return status;
         }
 
         private void TextUsuario_PreviewKeyDown(object sender, KeyEventArgs e) {
@@ -65,12 +110,16 @@ namespace awtj.Controles.SubControles {
             rest.RestrNome(TextNome.Text, 30, e);
         }
 
-        private void TextEndereco_PreviewKeyDown(object sender, KeyEventArgs e) {
-            rest.RestrTamanho(TextEndereco.Text, 30, e);
-        }
-
         private void TextEmail_PreviewKeyDown(object sender, KeyEventArgs e) {
             rest.RestrEmail(TextEmail.Text, 30, e);
+        }
+
+        private void TextCEP_PreviewKeyDown(object sender, KeyEventArgs e) {
+            rest.RestrNumero(TextCEP.Text, 8, e);
+        }
+
+        private void Verifica_Click(object sender, System.Windows.RoutedEventArgs e) {
+            BuscarCep(TextBoxCEP());
         }
     }
 }

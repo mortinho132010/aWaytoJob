@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace awtj.Controles {
@@ -24,14 +25,31 @@ namespace awtj.Controles {
             return eList;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-            if (xml.ComparaXml(tbUsuario.Text, tbSenha.Password) == false) {
+        private void Login() {
+            string[] res = xml.ComparaXml(tbUsuario.Text, tbSenha.Password);
+            if (res[4] == "false") {
                 labelnfo.Content = "Usuário ou Senha Invalidos!";
             } else {
                 Application.Current.MainWindow.Hide();
-                ClientWindow c = new ClientWindow();
+                ClientWindow c = new ClientWindow(res[0], res[1], res[2], Convert.ToInt32(res[3]), Convert.ToBoolean(res[4]));
                 c.Show();
             }
+        }
+
+        private void tbUsuario_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
+            if(e.Key == System.Windows.Input.Key.Return) {
+                Login();
+            }
+        }
+
+        private void tbSenha_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
+            if (e.Key == System.Windows.Input.Key.Return) {
+                Login();
+            }
+        }
+
+        private void buttonLogin_Click(object sender, RoutedEventArgs e) {
+            Login();
         }
     }
 

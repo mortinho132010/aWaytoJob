@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="awtj.Controles.MenuPessoa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:awtj.Controles"
+             mc:Ignorable="d" d:DesignWidth="800" Width="Auto">
+    <Grid>
+        <RadioButton x:Name="ButtonUsuario" Content="UserButton" Margin="10,10,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White" Checked="ButtonUsuario_Checked"/>
+
+        <RadioButton x:Name="ButtonLinha" Content="Linha do Tempo" Margin="10,114,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
+        <RadioButton x:Name="ButtonPost" Content="Postagens" Margin="10,194,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" Height="50" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
+        <RadioButton x:Name="ButtonInscricoes" Content="Inscrições" Margin="10,274,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" Height="50" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
+        <RadioButton x:Name="ButtonMensagens" Content="Mensagens" Margin="10,354,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" Height="50" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
+        <Button x:Name="ButtonSair" Content="Sair" Margin="10,0,10,10" Style="{DynamicResource MenuButton}" BorderBrush="#FFCBCBCB" Foreground="White" Background="Black" Height="50" VerticalAlignment="Bottom" Click="ButtonSair_Click"/>
+
+    </Grid>
+</UserControl>
