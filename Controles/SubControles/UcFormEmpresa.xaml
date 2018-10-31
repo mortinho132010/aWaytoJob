@@ -14,17 +14,19 @@
             <TextBlock TextWrapping="Wrap" Text="Confirme a Senha" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,112,10,0" TextAlignment="Center"/>
             <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,163,10,0" TextAlignment="Center"><Run Text="Nome"/><Run Text=" Fantasia"/></TextBlock>
             <TextBlock TextWrapping="Wrap" Text="Telefone" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,214,10,0" TextAlignment="Center"/>
-            <TextBlock TextWrapping="Wrap" Text="Endereço" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,265,10,0" TextAlignment="Center"/>
+            <TextBlock TextWrapping="Wrap" Text="CEP" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,265,10,0" TextAlignment="Center"/>
             <TextBlock TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,316,10,0" TextAlignment="Center"/>
             <TextBlock TextWrapping="Wrap" Text="CNPJ" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Margin="10,367,10,0" TextAlignment="Center"/>
-            <TextBox x:Name="TextUsuario" Height="23" Margin="30,33,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextUsuario_PreviewKeyDown"/>
-            <PasswordBox x:Name="TextSenha" Margin="30,84,30,0" VerticalAlignment="Top" Height="23" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextSenha_PreviewKeyDown"/>
-            <PasswordBox x:Name="TextConfirma" Margin="30,135,30,0" VerticalAlignment="Top" Height="23" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextConfirma_PreviewKeyDown"/>
-            <TextBox x:Name="TextNome" Height="23" Margin="30,186,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextNome_PreviewKeyDown"/>
-            <TextBox x:Name="TextEndereco" Height="23" Margin="30,288,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextEndereco_PreviewKeyDown"/>
-            <TextBox x:Name="TextEmail" Height="23" Margin="30,339,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextEmail_PreviewKeyDown"/>
-            <viblendEditors:MaskEditor x:Name="TextTelefone" Height="23" Margin="30,236,30,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" BorderBrush="#FFABADB3" Mask="(99)99999-9999" FontFamily="Calibri" FontSize="16"/>
-            <viblendEditors:MaskEditor x:Name="TextCnpj" HorizontalAlignment="Left" Height="24" Margin="30,385,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="333" BorderBrush="#FFABADB3" Mask="99.999.999/9999-99" FontFamily="Calibri" FontSize="16"/>
+            <TextBox x:Name="TextUsuario" Height="23" Margin="30,33,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextUsuario_PreviewKeyDown" TabIndex="0"/>
+            <PasswordBox x:Name="TextSenha" Margin="30,84,30,0" VerticalAlignment="Top" Height="23" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextSenha_PreviewKeyDown" TabIndex="1"/>
+            <PasswordBox x:Name="TextConfirma" Margin="30,135,30,0" VerticalAlignment="Top" Height="23" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextConfirma_PreviewKeyDown" TabIndex="2"/>
+            <TextBox x:Name="TextNome" Height="23" Margin="30,186,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextNome_PreviewKeyDown" TabIndex="3"/>
+            <TextBox x:Name="TextEmail" Height="23" Margin="30,339,30,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" PreviewKeyDown="TextEmail_PreviewKeyDown" TabIndex="6"/>
+            <viblendEditors:MaskEditor x:Name="TextTelefone" Height="23" Margin="30,236,30,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" BorderBrush="#FFABADB3" Mask="(99)99999-9999" FontFamily="Calibri" FontSize="16" TabIndex="4"/>
+            <viblendEditors:MaskEditor x:Name="TextCnpj" HorizontalAlignment="Left" Height="24" Margin="30,385,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="333" BorderBrush="#FFABADB3" Mask="99.999.999/9999-99" FontFamily="Calibri" FontSize="16" TabIndex="7"/>
+            <Label x:Name="labVerifica" Content="Status:" HorizontalAlignment="Left" Margin="179,287,0,0" VerticalAlignment="Top" Width="104" Foreground="White"/>
+            <Button x:Name="Verifica" Content="Verificar CEP" HorizontalAlignment="Left" Margin="288,290,0,0" VerticalAlignment="Top" Width="75" Click="Verifica_Click"/>
+            <TextBox x:Name="TextCEP" Height="23" Margin="30,288,219,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="3" PreviewKeyDown="TextCEP_PreviewKeyDown" FontSize="16" FontFamily="Calibri"/>
         </Grid>
     </Border>
 </UserControl>

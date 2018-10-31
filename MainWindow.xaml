@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:awtj"
         mc:Ignorable="d"
-        Title="MainWindow" Height="703.5" Width="1119.5">
+        Title="MainWindow" Height="705" Width="1120" MinWidth="1120" MinHeight="705">
     <Window.Resources>
         <Style x:Key="NormalButton" TargetType="{x:Type Button}">
             <Setter Property="Template">

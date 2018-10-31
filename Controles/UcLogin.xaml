@@ -27,13 +27,13 @@
         <Border Height="164" Margin="10,63,10,0" VerticalAlignment="Top" BorderBrush="White" BorderThickness="1" CornerRadius="3">
             <Grid Margin="0,0,-1,0">
                 <TextBlock TextWrapping="Wrap" Text="Nome de Usuário" VerticalAlignment="Top" Height="25" TextAlignment="Center" FontFamily="Arial" FontSize="16" Foreground="White" FontWeight="Bold" Margin="0,10,0,0"/>
-                <TextBox x:Name="tbUsuario" Height="23" Margin="34,35,34,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="tbUsuario" Height="23" Margin="34,35,34,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="0" PreviewKeyDown="tbUsuario_PreviewKeyDown"/>
                 <TextBlock Margin="0,79,0,0" TextWrapping="Wrap" Text="Senha" VerticalAlignment="Top" Height="25" TextAlignment="Center" FontFamily="Arial" FontSize="16" Foreground="White" FontWeight="Bold"/>
-                <PasswordBox x:Name="tbSenha" Margin="34,104,34,0" Height="23" VerticalAlignment="Top"/>
+                <PasswordBox x:Name="tbSenha" Margin="34,104,34,0" Height="23" VerticalAlignment="Top" TabIndex="1" PreviewKeyDown="tbSenha_PreviewKeyDown"/>
                 <Label x:Name="labelnfo" Content="" Margin="90,132,89,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold" Background="Transparent" Foreground="Red"/>
             </Grid>
         </Border>
-        <Button Content="LOGIN" Margin="165,232,166,0" VerticalAlignment="Top" Style="{DynamicResource ConfirmarStyle}" Background="#FF701F9B" BorderBrush="White" Foreground="White" Click="Button_Click"/>
+        <Button x:Name="buttonLogin" Content="LOGIN" Margin="165,232,166,0" VerticalAlignment="Top" Style="{DynamicResource ConfirmarStyle}" Background="#FF701F9B" BorderBrush="White" Foreground="White" Click="buttonLogin_Click" TabIndex="2"/>
 
     </Grid>
 </UserControl>

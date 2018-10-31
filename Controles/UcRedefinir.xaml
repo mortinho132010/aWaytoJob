@@ -10,10 +10,10 @@
         <Rectangle Height="53" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF313232" Offset="1"/>
+                    <GradientStop Color="#00313232" Offset="1"/>
                     <GradientStop Color="#FFB424FF" Offset="0.7"/>
                     <GradientStop Color="#FFB424FF" Offset="0.3"/>
-                    <GradientStop Color="#FF313232"/>
+                    <GradientStop Color="#00313232"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
