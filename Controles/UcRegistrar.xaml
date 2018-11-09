@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:awtj.Controles"
-             mc:Ignorable="d" d:DesignWidth="800" Width="405" Height="511">
+             mc:Ignorable="d" d:DesignWidth="800" Width="405" Height="570">
     <Grid>
         <Rectangle Height="53" VerticalAlignment="Top">
             <Rectangle.Fill>
@@ -26,7 +26,7 @@
             <ComboBoxItem Content="Empresa"/>
         </ComboBox>
         <Label Content="Tipo de Usuario:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,58,0,0" FontFamily="Arial" FontSize="16" FontWeight="Bold" Foreground="White" Height="29"/>
-        <Grid x:Name="ConteinerForm" Margin="5,87,5,5" Height="418"/>
+        <Grid x:Name="ConteinerForm" Margin="5,87,5,5" Height="477"/>
 
     </Grid>
 </UserControl>

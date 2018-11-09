@@ -61,10 +61,13 @@ namespace awtj {
                     if (x.BuscarCep(x.TextBoxCEP()) == true && x.VerificarCampos() == true && x.VerificarSenhas() == true) {
                         listaPessoas.Cadastrar(x.TextBoxUsuario(), x.TextConfirma(), x.TextBoxNome(), "",
                             x.TextBoxTelefone(), "", "", x.TextBoxCEP(), x.Cidade, x.Estado, x.Endereco,
-                            "", x.Bairro, "", x.TextBoxEmail(), x.RadioSelected(), @".\Images\SystemIcons\UserDefault.jpg", "", "");
+                            "", x.Bairro, "", x.TextBoxEmail(), x.RadioSelected(), @".\Images\SystemIcons\UserDefault.jpg", "", "", x.Date());
                         xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                        MessageBox.Show("'" + x.TextBoxUsuario() + "' Foi cadastrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        x.Clear();
+                        Estado1();
                     } else {
-                        MessageBox.Show("Não deixe nenhum campo em branco, e verifique se o CEP é válido",
+                        MessageBox.Show("Não deixe nenhum campo em branco, verifique se o CEP é válido e se as senhas coincidem!",
                             "Verifique os campos!", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 } else {
@@ -72,43 +75,48 @@ namespace awtj {
                     if (x.BuscarCep(x.TextBoxCEP()) == true && x.VerificarCampos() == true && x.VerificarSenhas() == true) {
                         listaEmpresas.Cadastrar(x.TextBoxUsuario(), x.TextPassConfirma(), x.TextBoxNome(),
                             x.TextBoxTelefone(), "", "", x.TextBoxCEP(), x.Cidade, x.Estado, x.Endereco, "",
-                            x.Bairro, "", x.TextBoxEmail(), x.TextBoxCnpj(), @".\Images\SystemIcons\UserDefault.jpg", "", "");
+                            x.Bairro, x.TextBoxEmail(), x.TextBoxCnpj(), @".\Images\SystemIcons\UserDefault.jpg", "", "", x.Date());
                         xmlMet.GuardarXml(listaPessoas, listaEmpresas);
+                        MessageBox.Show("'"+x.TextBoxUsuario() + "' Foi cadastrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        x.Clear();
+                        FormLogin();
                     } else {
                         MessageBox.Show("Não deixe nenhum campo em branco, e verifique se o CEP é válido",
                             "Verifique os campos!", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             } else {
-                FormLogin();
-                LabelReg.Content = "Ainda não possui uma conta para acessar?";
-                LabelRes.Content = "Não se Lembra de sua senha? Obtenha uma nova:";
-                RegButton.Content = "Registrar-se";
-                ResButton.Content = "Redefinir";
-                AlinharBotoes(RegButton, 290, 11, 0, 0);
-                AlinharBotoes(ResButton, 290, 54, 0, 0);
+                Estado1();
             }
+        }
+
+        private void Estado1() {
+            FormLogin();
+            LabelReg.Content = "Ainda não possui uma conta para acessar?";
+            LabelRes.Content = "Não se Lembra de sua senha? Obtenha uma nova:";
+            RegButton.Content = "Registrar-se";
+            ResButton.Content = "Redefinir";
+            AlinharBotoes(RegButton, 290, 11, 0, 0);
+            AlinharBotoes(ResButton, 290, 54, 0, 0);
+        }
+
+        private void Estado2() {
+            FormRedefinir();
+            LabelReg.Content = "";
+            LabelRes.Content = "";
+            RegButton.Content = "Voltar";
+            ResButton.Content = "Concluir";
+            AlinharBotoes(RegButton, 158, 54, 0, 0);
+            AlinharBotoes(ResButton, 158, 11, 0, 0);
         }
 
         private void ResButton_Click(object sender, RoutedEventArgs e) {
             if (ResButton.Content.Equals("Redefinir")) {
-                FormRedefinir();
-                LabelReg.Content = "";
-                LabelRes.Content = "";
-                RegButton.Content = "Voltar";
-                ResButton.Content = "Concluir";
-                AlinharBotoes(RegButton, 158, 54, 0, 0);
-                AlinharBotoes(ResButton, 158, 11, 0, 0);
+                Estado2();
             } else if (ResButton.Content.Equals("Concluir")) {
 
             } else {
-                FormLogin();
-                LabelReg.Content = "Ainda não possui uma conta para acessar?";
-                LabelRes.Content = "Não se Lembra de sua senha? Obtenha uma nova:";
-                RegButton.Content = "Registrar-se";
-                ResButton.Content = "Redefinir";
-                AlinharBotoes(RegButton, 290, 11, 0, 0);
-                AlinharBotoes(ResButton, 290, 54, 0, 0);
+                Estado1();
             }
         }
     }

@@ -24,15 +24,15 @@ namespace awtj {
                 pList.Cadastrar(pes[i]["usuario"].InnerText, pes[i]["senha"].InnerText, pes[i]["nome"].InnerText, pes[i]["sobrenome"].InnerText,
                     pes[i]["telefone"].InnerText, pes[i]["telefone1"].InnerText, pes[i]["telefone2"].InnerText, pes[i]["cep"].InnerText,
                     pes[i]["cidade"].InnerText, pes[i]["estado"].InnerText, pes[i]["endereco"].InnerText, pes[i]["numero"].InnerText,
-                    pes[i]["bairro"].InnerText, pes[i]["complemento"].InnerText, pes[i]["email"].InnerText, pes[i]["genero"].InnerText,
-                    pes[i]["imagem"].InnerText, pes[i]["facebook"].InnerText, pes[i]["linkedin"].InnerText);
+                    pes[i]["bairro"].InnerText, pes[i]["curriculo"].InnerText, pes[i]["email"].InnerText, pes[i]["genero"].InnerText,
+                    pes[i]["imagem"].InnerText, pes[i]["facebook"].InnerText, pes[i]["linkedin"].InnerText, pes[i]["data"].InnerText);
             }
             for (int i = 0; i < emp.Count; i++) {
                 eList.Cadastrar(emp[i]["usuario"].InnerText, emp[i]["senha"].InnerText, emp[i]["nome"].InnerText,
                     emp[i]["telefone"].InnerText, emp[i]["telefone1"].InnerText, emp[i]["telefone2"].InnerText, emp[i]["cep"].InnerText,
                     emp[i]["cidade"].InnerText, emp[i]["estado"].InnerText, emp[i]["endereco"].InnerText, emp[i]["numero"].InnerText,
-                    emp[i]["bairro"].InnerText, emp[i]["complemento"].InnerText, emp[i]["email"].InnerText, emp[i]["cnpj"].InnerText,
-                    emp[i]["imagem"].InnerText, emp[i]["facebook"].InnerText, emp[i]["linkedin"].InnerText);
+                    emp[i]["bairro"].InnerText, emp[i]["email"].InnerText, emp[i]["cnpj"].InnerText,
+                    emp[i]["imagem"].InnerText, emp[i]["facebook"].InnerText, emp[i]["linkedin"].InnerText, emp[i]["data"].InnerText);
             }
         }
 
@@ -60,12 +60,13 @@ namespace awtj {
                     dxml.WriteElementString("endereco", pessoas[i, 10]);
                     dxml.WriteElementString("numero", pessoas[i, 11]);
                     dxml.WriteElementString("bairro", pessoas[i, 12]);
-                    dxml.WriteElementString("complemento", pessoas[i, 13]);
+                    dxml.WriteElementString("curriculo", pessoas[i, 13]);
                     dxml.WriteElementString("email", pessoas[i, 14]);
                     dxml.WriteElementString("genero", pessoas[i, 15]);
                     dxml.WriteElementString("imagem", pessoas[i, 16]);
                     dxml.WriteElementString("facebook", pessoas[i, 17]);
                     dxml.WriteElementString("linkedin", pessoas[i, 18]);
+                    dxml.WriteElementString("data", pessoas[i, 19]);
                     dxml.WriteEndElement();
                 }
                 for (int i = 0; i < eList.Size(); i++) {
@@ -83,48 +84,93 @@ namespace awtj {
                     dxml.WriteElementString("endereco", empresas[i, 9]);
                     dxml.WriteElementString("numero", empresas[i, 10]);
                     dxml.WriteElementString("bairro", empresas[i, 11]);
-                    dxml.WriteElementString("complemento", empresas[i, 12]);
-                    dxml.WriteElementString("email", empresas[i, 13]);
-                    dxml.WriteElementString("cnpj", empresas[i, 14]);
-                    dxml.WriteElementString("imagem", empresas[i, 15]);
-                    dxml.WriteElementString("facebook", empresas[i, 16]);
-                    dxml.WriteElementString("linkedin", empresas[i, 17]);
+                    dxml.WriteElementString("email", empresas[i, 12]);
+                    dxml.WriteElementString("cnpj", empresas[i, 13]);
+                    dxml.WriteElementString("imagem", empresas[i, 14]);
+                    dxml.WriteElementString("facebook", empresas[i, 15]);
+                    dxml.WriteElementString("linkedin", empresas[i, 16]);
+                    dxml.WriteElementString("data", empresas[i, 17]);
                     dxml.WriteEndElement();
                 }
                 dxml.WriteFullEndElement();
                 dxml.Close();
             } catch (Exception ex) {
-                MessageBox.Show("Erro: " + ex.Message, "Erro!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Erro ao Guardar XML: " + ex.Message, "Erro!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         public string[] ComparaXml(string usu, string sen) {
-            string[] dados = new string[5];
-            dados[4] = "false";
+            string[] dados = new string[3];
+            dados[2] = "false";
             XmlDocument xml = new XmlDocument();
             xml.Load(@".\Contas\dados.xml");
             XmlNodeList usuarios;
             usuarios = xml.GetElementsByTagName("PESSOAS");
             for (int i = 0; i < usuarios.Count; i++) {
                 if (usuarios[i]["usuario"].InnerText == usu && usuarios[i]["senha"].InnerText == sen) {
-                    dados[0] = usuarios[i]["usuario"].InnerText;
-                    dados[1] = usuarios[i]["nome"].InnerText + " " + usuarios[i]["sobrenome"].InnerText;
-                    dados[2] = usuarios[i]["imagem"].InnerText;
-                    dados[3] = "" + i;
-                    dados[4] = "true";
+                    dados[0] = "" + i;
+                    dados[1] = "PESSOAS";
+                    dados[2] = "true";
                     break;
                 }
             }
             usuarios = xml.GetElementsByTagName("EMPRESAS");
             for (int i = 0; i < usuarios.Count; i++) {
                 if (usuarios[i]["usuario"].InnerText == usu && usuarios[i]["senha"].InnerText == sen) {
-                    dados[0] = usuarios[i]["usuario"].InnerText;
-                    dados[1] = usuarios[i]["nome"].InnerText + " " + usuarios[i]["sobrenome"].InnerText;
-                    dados[2] = usuarios[i]["imagem"].InnerText;
-                    dados[3] = "" + i;
-                    dados[4] = "true";
+                    dados[0] = "" + i;
+                    dados[1] = "EMPRESAS";
+                    dados[2] = "true";
                     break;
                 }
+            }
+            return dados;
+        }
+
+        public string[] GetDados(int ind, string tip) {
+            string[] dados = new string[20];
+            XmlDocument xml = new XmlDocument();
+            xml.Load(@".\Contas\dados.xml");
+            XmlNodeList list = xml.GetElementsByTagName(tip);
+            if (tip == "PESSOAS") {
+                dados[0] = list[ind]["usuario"].InnerText;
+                dados[1] = list[ind]["senha"].InnerText;
+                dados[2] = list[ind]["nome"].InnerText;
+                dados[3] = list[ind]["sobrenome"].InnerText;
+                dados[4] = list[ind]["telefone"].InnerText;
+                dados[5] = list[ind]["telefone1"].InnerText;
+                dados[6] = list[ind]["telefone2"].InnerText;
+                dados[7] = list[ind]["cep"].InnerText;
+                dados[8] = list[ind]["cidade"].InnerText;
+                dados[9] = list[ind]["estado"].InnerText;
+                dados[10] = list[ind]["endereco"].InnerText;
+                dados[11] = list[ind]["numero"].InnerText;
+                dados[12] = list[ind]["bairro"].InnerText;
+                dados[13] = list[ind]["curriculo"].InnerText;
+                dados[14] = list[ind]["email"].InnerText;
+                dados[15] = list[ind]["genero"].InnerText;
+                dados[16] = list[ind]["imagem"].InnerText;
+                dados[17] = list[ind]["facebook"].InnerText;
+                dados[18] = list[ind]["linkedin"].InnerText;
+                dados[19] = list[ind]["data"].InnerText;
+            } else {
+                dados[0] = list[ind]["usuario"].InnerText;
+                dados[1] = list[ind]["senha"].InnerText;
+                dados[2] = list[ind]["nome"].InnerText;
+                dados[3] = list[ind]["telefone"].InnerText;
+                dados[4] = list[ind]["telefone1"].InnerText;
+                dados[5] = list[ind]["telefone2"].InnerText;
+                dados[6] = list[ind]["cep"].InnerText;
+                dados[7] = list[ind]["cidade"].InnerText;
+                dados[8] = list[ind]["estado"].InnerText;
+                dados[9] = list[ind]["endereco"].InnerText;
+                dados[10] = list[ind]["numero"].InnerText;
+                dados[11] = list[ind]["bairro"].InnerText;
+                dados[12] = list[ind]["email"].InnerText;
+                dados[13] = list[ind]["cnpj"].InnerText;
+                dados[14] = list[ind]["imagem"].InnerText;
+                dados[15] = list[ind]["facebook"].InnerText;
+                dados[16] = list[ind]["linkedin"].InnerText;
+                dados[17] = list[ind]["data"].InnerText;
             }
             return dados;
         }

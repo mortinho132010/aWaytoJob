@@ -11,14 +11,29 @@ namespace awtj {
         public void Cadastrar(string usu, string sen, string nom, string sob, string tel,
             string tel1, string tel2, string cep, string cid,
             string est, string end, string num, string bai,
-            string cmp, string ema, string gen, string img,
-            string fac, string lin) {
+            string cur, string ema, string gen, string img,
+            string fac, string lin, string data) {
             if (head == null) {
-                head = new Pessoa(usu, sen, nom, sob, tel, tel1, tel2, cep, cid, est, end, num, bai, cmp, ema, gen, img, fac, lin);
+                head = new Pessoa(usu, sen, nom, sob, tel, tel1, tel2, cep, cid, est, end, num, bai, cur, ema, gen, img, fac, lin, data);
                 tail = head;
             } else {
-                tail.Next = new Pessoa(usu, sen, nom, sob, tel, tel1, tel2, cep, cid, est, end, num, bai, cmp, ema, gen, img, fac, lin);
+                tail.Next = new Pessoa(usu, sen, nom, sob, tel, tel1, tel2, cep, cid, est, end, num, bai, cur, ema, gen, img, fac, lin, data);
                 tail = tail.Next;
+            }
+        }
+
+        public void SetUserData(int indice, string nom, string sob, string tel,
+            string tel1, string tel2, string cep, string cid,
+            string est, string end, string num, string bai,
+            string img, string fac, string lin, string data) {
+            Pessoa aux = head;
+            if (Size() > indice) {
+                for(int i = 0; i < indice; i++) {
+                    aux = aux.Next;
+                }
+                aux.Alterar(nom, sob, tel, tel1, tel2, cep, cid, est, end, num, bai, img, fac, lin, data);
+            } else {
+                MessageBox.Show("AlterarCadastro(): Índice Inexistente", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -32,65 +47,42 @@ namespace awtj {
             return count;
         }
 
-        public string getDado(string dado, int tgt) {
-            dado = dado.ToLower();
+        public string[] GetUserData(int indice) {
             Pessoa aux = head;
-            if (tgt < Size()) {
-                for (int i = 0; i < tgt; i++) {
+            string[] strings = new string[20];
+            if (Size() > indice) {
+                for (int i = 0; i < indice; i++) {
                     aux = aux.Next;
                 }
-                switch (dado) {
-                    case "usuario":
-                        return aux.VarUsuario;
-                    case "senha":
-                        return aux.Senha;
-                    case "nome":
-                        return aux.Nome;
-                    case "sobrenome":
-                        return aux.Sobrenome;
-                    case "telefone":
-                        return aux.Telefone[0];
-                    case "telefone1":
-                        return aux.Telefone[1];
-                    case "telefone2":
-                        return aux.Telefone[2];
-                    case "cep":
-                        return aux.CEP;
-                    case "cidade":
-                        return aux.Cidade;
-                    case "estado":
-                        return aux.Estado;
-                    case "endereco":
-                        return aux.Endereco;
-                    case "numero":
-                        return aux.Numero;
-                    case "bairro":
-                        return aux.Bairro;
-                    case "complemento":
-                        return aux.Complemento;
-                    case "email":
-                        return aux.Email;
-                    case "genero":
-                        return aux.Genero;
-                    case "imagem":
-                        return aux.ImgDestino;
-                    case "facebook":
-                        return aux.Facebook;
-                    case "linkedin":
-                        return aux.Linkedin;
-                    default:
-                        MessageBox.Show("Dado Inexistente", "Erro");
-                        return "";
-                }
+                strings[0] = aux.VarUsuario;
+                strings[1] = aux.Senha;
+                strings[2] = aux.Nome;
+                strings[3] = aux.Sobrenome;
+                strings[4] = aux.Telefone[0];
+                strings[5] = aux.Telefone[1];
+                strings[6] = aux.Telefone[2];
+                strings[7] = aux.CEP;
+                strings[8] = aux.Cidade;
+                strings[9] = aux.Estado;
+                strings[10] = aux.Endereco;
+                strings[11] = aux.Numero;
+                strings[12] = aux.Bairro;
+                strings[13] = aux.DirCurriculo;
+                strings[14] = aux.Email;
+                strings[15] = aux.Genero;
+                strings[16] = aux.ImgDestino;
+                strings[17] = aux.Facebook;
+                strings[18] = aux.Linkedin;
+                strings[19] = aux.Data;
             } else {
-                MessageBox.Show("Índice Inexistente", "Erro");
-                return "";
+                MessageBox.Show("GetUserData(): Índice Inexistente", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            return strings;
         }
 
         public string[,] getAll() {
             Pessoa aux = head;
-            string[,] strings = new string[Size(), 19];
+            string[,] strings = new string[Size(), 20];
             for (int i = 0; i < Size(); i++) {
                 strings[i, 0] = aux.VarUsuario;
                 strings[i, 1] = aux.Senha;
@@ -105,12 +97,13 @@ namespace awtj {
                 strings[i, 10] = aux.Endereco;
                 strings[i, 11] = aux.Numero;
                 strings[i, 12] = aux.Bairro;
-                strings[i, 13] = aux.Complemento;
+                strings[i, 13] = aux.DirCurriculo;
                 strings[i, 14] = aux.Email;
                 strings[i, 15] = aux.Genero;
                 strings[i, 16] = aux.ImgDestino;
                 strings[i, 17] = aux.Facebook;
                 strings[i, 18] = aux.Linkedin;
+                strings[i, 19] = aux.Data;
                 aux = aux.Next;
             }
             return strings;

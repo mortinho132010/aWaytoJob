@@ -7,7 +7,6 @@
         public string Endereco { set; get; }
         public string Numero { set; get; }
         public string Bairro { set; get; }
-        public string Complemento { set; get; }
         public string Cidade { set; get; }
         public string Estado { set; get; }
         public string Pais { set; get; }
@@ -16,6 +15,6 @@
         public string ImgDestino { set; get; }
         public string Facebook { set; get; }
         public string Linkedin { set; get; }
-        public string DataNascimento { set; get; }
+        public string Data { set; get; }
     }
 }

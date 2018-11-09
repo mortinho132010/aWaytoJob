@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:awtj"
         mc:Ignorable="d"
-        Title="MainWindow" Height="705" Width="1120" MinWidth="1120" MinHeight="705">
+        Title="MainWindow" Height="762" Width="1120" MinWidth="1120" MinHeight="705">
     <Window.Resources>
         <Style x:Key="NormalButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -64,7 +64,7 @@
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect><Run Text="Projeto de Estrutura de Dados"/><Run Text=" 2018"/></TextBlock>
-        <Grid x:Name="conteiner" HorizontalAlignment="Right" Width="405" VerticalAlignment="Top" Height="511">
+        <Grid x:Name="conteiner" HorizontalAlignment="Right" Width="405" VerticalAlignment="Top" Height="570">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF313232" Offset="0.95"/>
@@ -78,7 +78,7 @@
                 </LinearGradientBrush>
             </Grid.OpacityMask>
         </Grid>
-        <Grid x:Name="UnderGrid" Margin="0,511,0,0" HorizontalAlignment="Right" Width="405" Height="105" VerticalAlignment="Top">
+        <Grid x:Name="UnderGrid" Margin="0,570,0,0" HorizontalAlignment="Right" Width="405" Height="105" VerticalAlignment="Top">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF939393" Offset="0"/>
