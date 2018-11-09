@@ -59,7 +59,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid x:Name="menu_lateral" Background="#FF383838" HorizontalAlignment="Left" Width="270">
-            <ToggleButton x:Name="expand_button" Content="ToggleButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ExpandButton}" Background="#FF5F5F5F" BorderBrush="#FFCBCBCB" RenderTransformOrigin="-4.253,0.55" Click="expand_button_Click"/>
+            <ToggleButton x:Name="expand_button" Content="ToggleButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ExpandButton}" Background="#FF5F5F5F" BorderBrush="#FFCBCBCB" RenderTransformOrigin="-4.253,0.55" Click="Expand_button_Click"/>
             <Grid x:Name="menu_conteiner" Margin="0,65,0,0" Width="270" RenderTransformOrigin="0.5,0.5" d:IsHidden="True">
                 <Grid.RenderTransform>
                     <TransformGroup>

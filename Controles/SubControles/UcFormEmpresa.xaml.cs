@@ -1,4 +1,5 @@
 ﻿using Correios;
+using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -17,6 +18,19 @@ namespace awtj.Controles.SubControles {
             rest = new Restricoes();
         }
 
+        public void Clear() {
+            TextUsuario.Clear();
+            TextSenha.Clear();
+            TextConfirma.Clear();
+            TextNome.Clear();
+            TextTelefone.Clear();
+            TextCEP.Clear();
+            labVerifica.Content = "Status:";
+            TextEmail.Clear();
+            Data.SelectedDate = DateTime.Now;
+            TextCnpj.Clear();
+        }
+
         public string TextBoxUsuario() {
             return TextUsuario.Text;
         }
@@ -30,7 +44,7 @@ namespace awtj.Controles.SubControles {
             return TextNome.Text;
         }
         public string TextBoxTelefone() {
-            return TextTelefone.Text;
+            return TextTelefone.EnteredValue;
         }
         public string TextBoxCEP() {
             return TextCEP.Text;
@@ -39,12 +53,19 @@ namespace awtj.Controles.SubControles {
             return TextEmail.Text;
         }
         public string TextBoxCnpj() {
-            return TextCnpj.Text;
+            return TextCnpj.EnteredValue;
+        }
+        public string Date() {
+            try {
+                return Data.SelectedDate.Value.ToShortDateString();
+            } catch {
+                return DateTime.Now.ToShortDateString();
+            }
         }
 
         public bool VerificarCampos() {
             if (TextBoxUsuario() == "" || TextPassSenha() == "" || TextPassConfirma() == "" || TextBoxNome() == "" ||
-                TextBoxTelefone() == "" || TextBoxCEP() == "" || TextBoxEmail() == "") {
+                TextBoxTelefone().Contains("_") || TextBoxCEP() == "" || TextBoxEmail() == "" || TextBoxCnpj().Contains("_")) {
                 return false;
             } else return true;
         }
@@ -75,7 +96,7 @@ namespace awtj.Controles.SubControles {
                         Estado = "";
                         status = false;
                     }
-                } catch (System.ServiceModel.FaultException e) {
+                } catch (System.ServiceModel.FaultException) {
                     labVerifica.Content = "Status: INVALIDO";
                     Cidade = "";
                     Bairro = "";

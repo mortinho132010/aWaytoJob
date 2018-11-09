@@ -11,13 +11,13 @@ namespace awtj {
         public void Cadastrar(string usu, string sen, string nom, string tel,
             string tel1, string tel2, string cep, string cid,
             string est, string end, string num, string bai,
-            string cmp, string ema, string cnp, string img,
-            string fac, string lin) {
+            string ema, string cnp, string img,
+            string fac, string lin, string data) {
             if (head == null) {
-                head = new Empresa(usu, sen, nom, tel, tel1, tel2, cep, cid, est, end, num, bai, cmp, ema, cnp, img, fac, lin);
+                head = new Empresa(usu, sen, nom, tel, tel1, tel2, cep, cid, est, end, num, bai, ema, cnp, img, fac, lin, data);
                 tail = head;
             } else {
-                tail.Next = new Empresa(usu, sen, nom, tel, tel1, tel2, cep, cid, est, end, num, bai, cmp, ema, cnp, img, fac, lin);
+                tail.Next = new Empresa(usu, sen, nom, tel, tel1, tel2, cep, cid, est, end, num, bai, ema, cnp, img, fac, lin, data);
                 tail = tail.Next;
             }
         }
@@ -32,58 +32,35 @@ namespace awtj {
             return count;
         }
 
-        public string getDado(string dado, int tgt) {
-            dado = dado.ToLower();
+        public string[] GetUserData(int indice) {
             Empresa aux = head;
-            if (tgt < Size()) {
-                for (int i = 0; i < tgt; i++) {
+            string[] strings = new string[18];
+            if (Size() > indice) {
+                for (int i = 0; i < indice; i++) {
                     aux = aux.Next;
                 }
-                switch (dado) {
-                    case "usuario":
-                        return aux.VarUsuario;
-                    case "senha":
-                        return aux.Senha;
-                    case "nome":
-                        return aux.Nome;
-                    case "telefone":
-                        return aux.Telefone[0];
-                    case "telefone1":
-                        return aux.Telefone[1];
-                    case "telefone2":
-                        return aux.Telefone[2];
-                    case "cep":
-                        return aux.CEP;
-                    case "cidade":
-                        return aux.Cidade;
-                    case "estado":
-                        return aux.Estado;
-                    case "endereco":
-                        return aux.Endereco;
-                    case "numero":
-                        return aux.Numero;
-                    case "bairro":
-                        return aux.Bairro;
-                    case "complemento":
-                        return aux.Complemento;
-                    case "email":
-                        return aux.Email;
-                    case "cnpj":
-                        return aux.Cnpj;
-                    case "imagem":
-                        return aux.ImgDestino;
-                    case "facebook":
-                        return aux.Facebook;
-                    case "linkedin":
-                        return aux.Linkedin;
-                    default:
-                        MessageBox.Show("Dado Inexistente", "Erro");
-                        return "";
-                }
+                strings[0] = aux.VarUsuario;
+                strings[1] = aux.Senha;
+                strings[2] = aux.Nome;
+                strings[3] = aux.Telefone[0];
+                strings[4] = aux.Telefone[1];
+                strings[5] = aux.Telefone[2];
+                strings[6] = aux.CEP;
+                strings[7] = aux.Cidade;
+                strings[8] = aux.Estado;
+                strings[9] = aux.Endereco;
+                strings[10] = aux.Numero;
+                strings[11] = aux.Bairro;
+                strings[12] = aux.Email;
+                strings[13] = aux.Cnpj;
+                strings[14] = aux.ImgDestino;
+                strings[15] = aux.Facebook;
+                strings[16] = aux.Linkedin;
+                strings[17] = aux.Data;
             } else {
-                MessageBox.Show("Índice Inexistente", "Erro");
-                return "";
+                MessageBox.Show("GetUserData(): Índice Inexistente", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            return strings;
         }
 
         public string[,] getAll() {
@@ -102,12 +79,12 @@ namespace awtj {
                 strings[i, 9] = aux.Endereco;
                 strings[i, 10] = aux.Numero;
                 strings[i, 11] = aux.Bairro;
-                strings[i, 12] = aux.Complemento;
-                strings[i, 13] = aux.Email;
-                strings[i, 14] = aux.Cnpj;
-                strings[i, 15] = aux.ImgDestino;
-                strings[i, 16] = aux.Facebook;
-                strings[i, 17] = aux.Linkedin;
+                strings[i, 12] = aux.Email;
+                strings[i, 13] = aux.Cnpj;
+                strings[i, 14] = aux.ImgDestino;
+                strings[i, 15] = aux.Facebook;
+                strings[i, 16] = aux.Linkedin;
+                strings[i, 17] = aux.Data;
                 aux = aux.Next;
             }
             return strings;

@@ -1,0 +1,22 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:awtj.Controles.SubControles"
+             xmlns:viblendEditors="clr-namespace:VIBlend.WPF.Controls;assembly=VIBlend.WPF.Editors" x:Class="awtj.Controles.SubControles.UcFormEspecCurso"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="473" Height="Auto" VerticalAlignment="Top">
+    <Grid>
+        <Label Content="Curso:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Inicio em: (mm/aaaa)" HorizontalAlignment="Left" Margin="40,110,0,0" Height="25" VerticalAlignment="Top"/>
+
+        <viblendEditors:MaskEditor HorizontalAlignment="Left" Height="25" Margin="193,110,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="64" Mask="99/9999" FontFamily="Calibri" FontSize="16"/>
+        <Label Content="Conclusão em: (mm/aaaa)" HorizontalAlignment="Left" Margin="40,155,0,0" VerticalAlignment="Top" Height="25"/>
+        <viblendEditors:MaskEditor HorizontalAlignment="Left" Height="25" Margin="193,155,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="64" Mask="99/9999" FontFamily="Calibri" FontSize="16"/>
+        <Label Content="Instituição:" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox Height="25" Margin="112,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
+        <TextBox Height="25" Margin="112,65,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
+
+    </Grid>
+</UserControl>

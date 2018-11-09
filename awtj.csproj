@@ -73,6 +73,18 @@
     <Compile Include="Controles\SubControles\UcFormEmpresa.xaml.cs">
       <DependentUpon>UcFormEmpresa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\SubControles\UcFormEspecCurso.xaml.cs">
+      <DependentUpon>UcFormEspecCurso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SubControles\UcFormEspecFerram.xaml.cs">
+      <DependentUpon>UcFormEspecFerram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SubControles\UcFormEspecIdioma.xaml.cs">
+      <DependentUpon>UcFormEspecIdioma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SubControles\UcFormExperiencia.xaml.cs">
+      <DependentUpon>UcFormExperiencia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\SubControles\UcFormPessoa.xaml.cs">
       <DependentUpon>UcFormPessoa.xaml</DependentUpon>
     </Compile>
@@ -102,6 +114,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\SubControles\UcFormEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\SubControles\UcFormEspecCurso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\SubControles\UcFormEspecFerram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\SubControles\UcFormEspecIdioma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\SubControles\UcFormExperiencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
