@@ -58,6 +58,16 @@
                 <GradientStop Color="Black" Offset="0.87"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <Grid x:Name="main_conteiner" Margin="285,0,212,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+        </Grid>
         <Grid x:Name="menu_lateral" Background="#FF383838" HorizontalAlignment="Left" Width="270">
             <ToggleButton x:Name="expand_button" Content="ToggleButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ExpandButton}" Background="#FF5F5F5F" BorderBrush="#FFCBCBCB" RenderTransformOrigin="-4.253,0.55" Click="Expand_button_Click"/>
             <Grid x:Name="menu_conteiner" Margin="0,65,0,0" Width="270" RenderTransformOrigin="0.5,0.5" d:IsHidden="True">
@@ -71,21 +81,11 @@
                 </Grid.RenderTransform>
             </Grid>
             <RadioButton x:Name="UserButton" Content="UserButton" Margin="10,93,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Foreground="White" Checked="RadioButton_Checked" Background="Black"/>
-            <RadioButton Content="Linha do Tempo" Margin="10,212,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
+            <RadioButton Content="Linha do Tempo" Margin="10,212,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White" Checked="RadioButton_Checked_1" IsChecked="True"/>
             <RadioButton Content="Posts" Margin="10,267,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
             <RadioButton Content="Ativos" Margin="10,322,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
             <Button Content="Sair" Margin="10,0,10,10" Style="{DynamicResource MenuButton}" Height="50" VerticalAlignment="Bottom" Background="Black" Foreground="White" Click="Button_Click" BorderBrush="#FFCBCBCB"/>
             <RadioButton Content="Mensagens" Margin="10,377,10,0" VerticalAlignment="Top" Style="{DynamicResource MenuItem}" BorderBrush="#FFCBCBCB" Background="Black" Foreground="White"/>
-        </Grid>
-        <Grid x:Name="main_conteiner" Margin="285,0,217,0" ScrollViewer.HorizontalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
         </Grid>
         <Grid Background="#FF383838" HorizontalAlignment="Right" Width="212" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
             <Rectangle Height="53" VerticalAlignment="Top">

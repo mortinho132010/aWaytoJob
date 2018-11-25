@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:awtj.Controles"
-             xmlns:viblendEditors="clr-namespace:VIBlend.WPF.Controls;assembly=VIBlend.WPF.Editors" x:Class="awtj.Controles.PerfilPessoa"
+             xmlns:viblendEditors="clr-namespace:VIBlend.WPF.Controls;assembly=VIBlend.WPF.Editors" x:Class="awtj.Controles.FormPerfilEmpresa"
              mc:Ignorable="d" 
-             d:DesignHeight="1966" d:DesignWidth="610" Width="Auto" Height="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+             d:DesignHeight="815" d:DesignWidth="583">
     <ScrollViewer>
         <Grid>
-            <Button x:Name="ImagePicker" Content="SELECIONE UMA IMAGEM DE PERFIL" Margin="0,10,0,0" Style="{DynamicResource OpenFile}" Click="Button_Click" Width="200" Height="200" Background="#FFCF73FF" Foreground="White" BorderBrush="#FFE7B8FF" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="ImagePicker" Content="SELECIONE UMA IMAGEM DE PERFIL" Margin="196.5,10,169.5,0" Style="{DynamicResource OpenFile}" Click="Button_Click" Width="200" Height="200" Background="#FFCF73FF" Foreground="White" BorderBrush="#FFE7B8FF" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-            <Grid Margin="0,230,10,0" Height="585" VerticalAlignment="Top" Background="#FF939393">
+            <Grid Margin="0,230,-17,0" Height="585" VerticalAlignment="Top" Background="#FF939393">
                 <Border BorderBrush="#FFCBCBCB" BorderThickness="1" Margin="0">
                     <Rectangle Margin="-1,-1,-1,0" Height="53" VerticalAlignment="Top">
                         <Rectangle.Fill>
@@ -37,10 +37,8 @@
                         <ColumnDefinition Width="20*"/>
                         <ColumnDefinition Width="232*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Nome*:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
-                    <TextBox x:Name="TbNome" Height="25" Margin="108,20,3,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="0" PreviewKeyDown="TbNome_PreviewKeyDown"/>
-                    <Label Content="Sobrenome:" Margin="3.22,20,0,0" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="73.94" Height="25" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="TbSobrenome" Height="25" Margin="62.16,20,40,0" VerticalAlignment="Top" Grid.Column="2" FontFamily="Calibri" FontSize="16" TabIndex="1" PreviewKeyDown="TbSobrenome_PreviewKeyDown"/>
+                    <Label Content="Empresa*:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
+                    <TextBox x:Name="TbNome" Height="25" Margin="108,20,3,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="0"/>
                     <viblendEditors:MaskEditor x:Name="MskTel1" Grid.ColumnSpan="3" Height="25" Margin="121.762,65,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" BorderBrush="#FFABADB3" Mask="(99)99999-9999" HorizontalAlignment="Left" Width="120" TabIndex="2"/>
                     <viblendEditors:MaskEditor x:Name="MskTel2" Grid.ColumnSpan="3" Height="25" Margin="121.762,110,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" BorderBrush="#FFABADB3" Mask="(99)99999-9999" HorizontalAlignment="Left" Width="120" TabIndex="4" IsEnabled="False"/>
                     <viblendEditors:MaskEditor x:Name="MskTel3" Grid.ColumnSpan="3" Height="25" Margin="121.762,155,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" BorderBrush="#FFABADB3" Mask="(99)99999-9999" HorizontalAlignment="Left" Width="120" TabIndex="6" IsEnabled="False"/>
@@ -58,7 +56,7 @@
                     <TextBox x:Name="TbEndereco" Height="25" Margin="106.827,290,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Grid.ColumnSpan="2" TabIndex="11"/>
                     <Label Content="Numero:" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top" Height="25" Grid.Column="2" RenderTransformOrigin="0.08,0.56"/>
                     <TextBox x:Name="TbNumero" Height="25" Margin="71,290,40,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Grid.Column="2" TabIndex="12"/>
-                    <Label Content="Data de Nascimento*:" HorizontalAlignment="Left" Margin="40,335,0,0" VerticalAlignment="Top" Height="25"/>
+                    <Label Content="Data de Fundação*:" HorizontalAlignment="Left" Margin="40,335,0,0" VerticalAlignment="Top" Height="25"/>
                     <viblendEditors:DateTimePicker x:Name="DtpData" HorizontalAlignment="Left" Margin="165,335,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" DefaultDateTimeFormat="ShortDatePattern" Culture="br" TabIndex="13" FontSize="16"/>
                     <Label Content="Facebook:" HorizontalAlignment="Left" Margin="40,380,0,0" VerticalAlignment="Top" Height="25"/>
                     <Label Content="LinkedIn:" HorizontalAlignment="Left" Margin="40,425,0,0" Height="25" VerticalAlignment="Top"/>
@@ -102,81 +100,10 @@
                         <ComboBoxItem Content="SE"/>
                         <ComboBoxItem Content="TO"/>
                     </ComboBox>
+                    <Label Content="CNPJ*:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <viblendEditors:MaskEditor x:Name="MskCnpj" Height="25" Margin="39,20,40,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" BorderBrush="#FFABADB3" TabIndex="2" Grid.Column="2" Mask="99.999.999/9999-99"/>
                 </Grid>
             </Grid>
-            <Grid x:Name="CurriculoFormOut" Margin="0,835,10,0" Background="#FF939393" Height="1131" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Border BorderBrush="#FFCBCBCB" BorderThickness="1" Margin="0">
-                    <Rectangle Margin="-1,-1,-1,0" Height="53" VerticalAlignment="Top">
-                        <Rectangle.Fill>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#00939393" Offset="0"/>
-                                <GradientStop Offset="1" Color="#00939393"/>
-                                <GradientStop Color="#FFB424FF" Offset="0.3"/>
-                                <GradientStop Color="#FFB424FF" Offset="0.7"/>
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Border>
-                <TextBlock Margin="10,12,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Foreground="White" FontFamily="Calibri" FontSize="22" FontWeight="Bold" FontStyle="Italic" TextAlignment="Center" Text="Seu Currículo">
-                    <TextBlock.Effect>
-                        <DropShadowEffect/>
-                    </TextBlock.Effect></TextBlock>
-                <Grid x:Name="CurriculoFormIn" Margin="55" Background="#FFE7E8EC">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="438*"/>
-                        <RowDefinition x:Name="gridspliter1" Height="168"/>
-                        <RowDefinition x:Name="gridspliter2" Height="158"/>
-                        <RowDefinition x:Name="gridspliter3" Height="257"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="CARACTERÍSTICAS PROFISSIONAIS" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25" Width="194"/>
-                    <Separator Height="26" Margin="239,20,40,0" VerticalAlignment="Top"/>
-                    <Label Content="Área de Atuação:" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-                    <Label Content="Especificação:" HorizontalAlignment="Left" Margin="40,110,0,0" VerticalAlignment="Top" Height="25" Width="83"/>
-                    <Label Content="Escolaridade:" HorizontalAlignment="Left" Margin="40,155,0,0" VerticalAlignment="Top" Height="25" Width="79"/>
-                    <Label Content="FORMAÇÃO ESPECÍFICA - CURSOS" HorizontalAlignment="Left" Margin="40,200,0,0" VerticalAlignment="Top" Height="25" Width="194"/>
-                    <Separator Height="26" Margin="239,200,40,0" VerticalAlignment="Top"/>
-                    <Grid x:Name="curso_conteiner" Margin="0,225,0,8">
-                        <viblendEditors:LinkLabel x:Name="addCurso" Content="Adicionar Curso" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="94" Click="AddCurso_Click" TabIndex="20"/>
-                    </Grid>
-                    <Label Content="DOMÍNIO DE FERRAMENTAS" HorizontalAlignment="Left" Margin="40,12,0,0" VerticalAlignment="Top" Height="26" Width="165" Grid.Row="1"/>
-                    <Separator Height="26" Margin="210,12,40,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <Grid x:Name="ferram_conteiner" Margin="0,38,0,16" Grid.Row="1">
-                        <viblendEditors:LinkLabel x:Name="addFerramenta" Content="Adicionar Ferramenta" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="124" Click="AddFerramenta_Click" TabIndex="21"/>
-                    </Grid>
-                    <Label Content="IDIOMAS COMPLEMENTARES" HorizontalAlignment="Left" Margin="40,4,0,0" VerticalAlignment="Top" Height="26" Grid.Row="2"/>
-                    <Separator Height="26" Margin="211,4,40,0" VerticalAlignment="Top" Grid.Row="2"/>
-                    <Grid x:Name="idioma_conteiner" Margin="0,30,0,13" Grid.Row="2">
-                        <viblendEditors:LinkLabel x:Name="addIdioma" Content="Adicionar Idioma" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Click="AddIdioma_Click" TabIndex="22"/>
-                    </Grid>
-                    <Button x:Name="SalvarCurri" Content="Salvar" HorizontalAlignment="Right" Width="75" Height="25" VerticalAlignment="Bottom" Style="{DynamicResource ConfirmarStyle}" Foreground="White" Margin="0,0,28,19" Grid.Row="3" Click="SalvarCurri_Click" TabIndex="24"/>
-                    <Label Content="EXPERIÊNCIA PROFISSIONAL" HorizontalAlignment="Left" Margin="40,6,0,0" VerticalAlignment="Top" Grid.Row="3"/>
-                    <Separator Height="26" Margin="207,6,40,0" VerticalAlignment="Top" Grid.Row="3"/>
-                    <Grid x:Name="experi_conteiner" Margin="0,32,120,19" Grid.Row="3">
-                        <viblendEditors:LinkLabel x:Name="addOutro" Content="Adicionar Outro" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="94" Click="AddOutro_Click" TabIndex="23"/>
-                    </Grid>
-                    <Grid Margin="0,59,28,0" Height="133" VerticalAlignment="Top" Grid.Row="3" HorizontalAlignment="Right" Width="87">
-                        <Rectangle Fill="#FFF4F4F5" Stroke="Black" RadiusX="10" RadiusY="10"/>
-                        <TextBlock Margin="10" TextWrapping="Wrap" TextAlignment="Center"><Run Text="Marque"/><Run Text=" "/><Run Text="e"/><Run Text="ncerrado "/><Run Text="a"/><Run Text="penas se j"/><Run Text="á"/><Run Text=" não estiver mais trabalhando no cargo."/></TextBlock>
-                    </Grid>
-                    <TextBox x:Name="TbAtuacao" Height="25" Margin="145,65,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="17"/>
-                    <TextBox x:Name="TbEspecificacao" Height="25" Margin="145,110,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="18"/>
-                    <ComboBox x:Name="CmbEscolaridade" HorizontalAlignment="Left" Margin="145,155,0,0" VerticalAlignment="Top" Width="250" Height="25" FontFamily="Calibri" FontSize="16" SelectedIndex="0" TabIndex="19">
-                        <ComboBoxItem Content="Ensino Fundamental Incompleto"/>
-                        <ComboBoxItem Content="Ensino Fundamental Completo"/>
-                        <ComboBoxItem Content="Ensino Médio Incompleto"/>
-                        <ComboBoxItem Content="Ensino Médio Completo"/>
-                        <ComboBoxItem Content="Ensino Superior Incompleto"/>
-                        <ComboBoxItem Content="Ensino Superior Completo"/>
-                    </ComboBox>
-                </Grid>
-            </Grid>
-
         </Grid>
     </ScrollViewer>
 </UserControl>

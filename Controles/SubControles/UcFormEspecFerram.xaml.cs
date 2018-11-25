@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace awtj.Controles.SubControles {
     /// <summary>
@@ -20,6 +7,28 @@ namespace awtj.Controles.SubControles {
     public partial class UcFormEspecFerram : UserControl {
         public UcFormEspecFerram() {
             InitializeComponent();
+        }
+
+        public void SetDadosFerramentas(string fer, string niv) {
+            TbFerramenta.Text = fer;
+            SetNivel(niv);
+        }
+
+        private void SetNivel(string n) {
+            for (int i = 0; i < CmbNivel.Items.Count; i++) {
+                CmbNivel.SelectedIndex = i;
+                if (CmbNivel.SelectedItem.ToString().Contains(n)) {
+                    break;
+                }
+            }
+        }
+
+        public string GetFerramenta() {
+            return TbFerramenta.Text;
+        }
+
+        public string GetNivel() {
+            return CmbNivel.Text;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace awtj {
+﻿using System.Collections;
+
+namespace awtj {
     class Usuario {
         public string Nome { set; get; }
         public string VarUsuario { set; get; }
@@ -16,5 +18,6 @@
         public string Facebook { set; get; }
         public string Linkedin { set; get; }
         public string Data { set; get; }
+        public ArrayList conexoes;
     }
 }

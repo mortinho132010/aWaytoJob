@@ -75,12 +75,12 @@ namespace awtj {
                 strings[18] = aux.Linkedin;
                 strings[19] = aux.Data;
             } else {
-                MessageBox.Show("GetUserData(): Índice Inexistente", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(string.Format("GetUserData(): Índice Inexistente:\nInserido: {0}\nTamanho: {1}", indice, Size()), "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return strings;
         }
 
-        public string[,] getAll() {
+        public string[,] GetAll() {
             Pessoa aux = head;
             string[,] strings = new string[Size(), 20];
             for (int i = 0; i < Size(); i++) {

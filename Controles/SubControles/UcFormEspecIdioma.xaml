@@ -8,9 +8,14 @@
              d:DesignHeight="90" d:DesignWidth="473" VerticalAlignment="Top">
     <Grid>
         <Label Content="Idioma:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox Height="25" Margin="94,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
+        <TextBox x:Name="TbIdioma" Height="25" Margin="94,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="0"/>
         <Label Content="Nível de Proficiência:" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Height="25"/>
-        <ComboBox Margin="171,65,40,0" VerticalAlignment="Top" Height="25" FontFamily="Calibri" FontSize="16"/>
+        <ComboBox x:Name="CmbNivel" Margin="171,65,0,0" VerticalAlignment="Top" Height="25" FontFamily="Calibri" FontSize="16" SelectedIndex="0" HorizontalAlignment="Left" Width="120" TabIndex="1">
+            <ComboBoxItem Content="Básico"/>
+            <ComboBoxItem Content="Intermediário"/>
+            <ComboBoxItem Content="Avançado"/>
+            <ComboBoxItem Content="Fluente"/>
+        </ComboBox>
 
     </Grid>
 </UserControl>

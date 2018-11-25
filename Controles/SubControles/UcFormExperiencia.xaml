@@ -10,13 +10,12 @@
     <Grid>
         <Label Content="Empresa:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
         <Label Content="Cargo:" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Início em: (mm/aaaa)" HorizontalAlignment="Left" Margin="40,110,0,0" VerticalAlignment="Top" Height="25"/>
-        <CheckBox Content="Encerrado em: (mm/aaaa)" HorizontalAlignment="Left" Margin="40,161,0,0" VerticalAlignment="Top" Height="15"/>
-        <TextBox Height="25" Margin="103,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
-        <TextBox Height="25" Margin="103,66,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
-
-        <viblendEditors:MaskEditor HorizontalAlignment="Left" Height="25" Margin="201,110,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="67" BorderBrush="#FFABADB3" Mask="99/9999" FontFamily="Calibri" FontSize="16"/>
-        <viblendEditors:MaskEditor HorizontalAlignment="Left" Height="25" Margin="201,155,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="67" BorderBrush="#FFABADB3" Mask="99/9999" FontFamily="Calibri" FontSize="16"/>
+        <Label Content="Início em:" HorizontalAlignment="Left" Margin="40,110,0,0" VerticalAlignment="Top" Height="25"/>
+        <CheckBox x:Name="Check" Content="Encerrado em:" HorizontalAlignment="Left" Margin="40,161,0,0" VerticalAlignment="Top" Height="15" Unchecked="Check_Unchecked" Checked="Check_Checked" TabIndex="3"/>
+        <TextBox x:Name="TbEmpresa" Height="25" Margin="103,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="0"/>
+        <TextBox x:Name="TbCargo" Height="25" Margin="103,66,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="1"/>
+        <viblendEditors:DateTimePicker x:Name="DateInicio" HorizontalAlignment="Left" Margin="146,110,0,0" VerticalAlignment="Top" DefaultDateTimeFormat="YearMonthPattern" Height="25" TabIndex="2"/>
+        <viblendEditors:DateTimePicker x:Name="DateConclusao" HorizontalAlignment="Left" Margin="146,155,0,0" VerticalAlignment="Top" DefaultDateTimeFormat="YearMonthPattern" Height="25" IsEnabled="False" TabIndex="4"/>
 
     </Grid>
 </UserControl>

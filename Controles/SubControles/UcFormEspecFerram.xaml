@@ -7,10 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="90" d:DesignWidth="473" VerticalAlignment="Top">
     <Grid>
-        <Label Content="Descrição:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox Height="25" Margin="109,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
+        <Label Content="Ferramenta:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox x:Name="TbFerramenta" Height="25" Margin="118,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="0"/>
         <Label Content="Nível de Proficiência:" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Height="25"/>
-        <ComboBox Margin="165,65,40,0" VerticalAlignment="Top" Height="25" FontFamily="Calibri" FontSize="16"/>
+        <ComboBox x:Name="CmbNivel" Margin="165,65,0,0" VerticalAlignment="Top" Height="25" FontFamily="Calibri" FontSize="16" HorizontalAlignment="Left" Width="120" SelectedIndex="0" TabIndex="1">
+            <ComboBoxItem Content="Básico"/>
+            <ComboBoxItem Content="Intermediário"/>
+            <ComboBoxItem Content="Profissional"/>
+        </ComboBox>
 
     </Grid>
 </UserControl>

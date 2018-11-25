@@ -1,4 +1,7 @@
-﻿using System;
+﻿using awtj.Controles;
+using awtj.Controles.SubControles;
+using System;
+using System.Collections;
 using System.Windows;
 using System.Xml;
 
@@ -39,8 +42,8 @@ namespace awtj {
         public void GuardarXml(ListaPessoas pList, ListaEmpresas eList) {
             try {
                 XmlTextWriter dxml = new XmlTextWriter(@".\Contas\dados.xml", null);
-                string[,] pessoas = pList.getAll();
-                string[,] empresas = eList.getAll();
+                string[,] pessoas = pList.GetAll();
+                string[,] empresas = eList.GetAll();
                 dxml.WriteStartDocument();
                 dxml.Formatting = Formatting.Indented;
                 dxml.WriteStartElement("USUARIOS");
@@ -173,6 +176,307 @@ namespace awtj {
                 dados[17] = list[ind]["data"].InnerText;
             }
             return dados;
+        }
+
+        public void SetCurriculoXML(string user, string[] carac, ArrayList fec, ArrayList fef, ArrayList fei, ArrayList fee) {
+            UcFormEspecCurso curso;
+            UcFormEspecFerram ferram;
+            UcFormEspecIdioma idioma;
+            UcFormExperiencia experi;
+            try {
+                XmlTextWriter dxml = new XmlTextWriter(@".\Curriculos\" + user + ".xml", null);
+                dxml.WriteStartDocument();
+                dxml.Formatting = Formatting.Indented;
+                dxml.WriteStartElement("CURRICULO");
+                dxml.WriteStartElement("CARACTERISTICAS");
+                dxml.WriteElementString("atuacao", carac[0]);
+                dxml.WriteElementString("especificacao", carac[1]);
+                dxml.WriteElementString("escolaridade", carac[2]);
+                dxml.WriteEndElement();
+                string res = "";
+                int i = 0;
+                foreach (var ele in fec) {
+                    curso = (UcFormEspecCurso) ele;
+                    if (curso.GetTbDescricao() != "" || curso.GetTbInstituicao() != "") {
+                        dxml.WriteStartElement("CURSOS");
+                        dxml.WriteAttributeString("id", "" + i);
+                        dxml.WriteElementString("descricao", curso.GetTbDescricao());
+                        dxml.WriteElementString("instituicao", curso.GetTbInstituicao());
+                        dxml.WriteElementString("nivel", curso.GetCmbNivel());
+                        dxml.WriteElementString("inicio", curso.GetDateInicio());
+                        dxml.WriteElementString("conclusao", curso.GetDateConclusao());
+                        dxml.WriteEndElement();
+                    } else {
+                        res += (i + 1) + "º curso\n";
+                    }
+                    i++;
+                }
+                i = 0;
+                foreach (var ele in fef) {
+                    ferram = (UcFormEspecFerram) ele;
+                    if (ferram.GetFerramenta() != "") {
+                        dxml.WriteStartElement("FERRAMENTAS");
+                        dxml.WriteAttributeString("id", "" + i);
+                        dxml.WriteElementString("ferramenta", ferram.GetFerramenta());
+                        dxml.WriteElementString("nivel", ferram.GetNivel());
+                        dxml.WriteEndElement();
+                    } else {
+                        res += (i + 1) + "º ferramenta\n";
+                    }
+                    i++;
+                }
+                i = 0;
+                foreach (var ele in fei) {
+                    idioma = (UcFormEspecIdioma) ele;
+                    if (idioma.GetIdioma() != "") {
+                        dxml.WriteStartElement("IDIOMAS");
+                        dxml.WriteAttributeString("id", "" + i);
+                        dxml.WriteElementString("idioma", idioma.GetIdioma());
+                        dxml.WriteElementString("nivel", idioma.GetNivel());
+                        dxml.WriteEndElement();
+                    } else {
+                        res += (i + 1) + "º idioma\n";
+                    }
+                    i++;
+                }
+                i = 0;
+                foreach (var ele in fee) {
+                    experi = (UcFormExperiencia) ele;
+                    if (experi.GetTbCargo() != "" || experi.GetTbEmpresa() != "") {
+                        dxml.WriteStartElement("EXPERIENCIAS");
+                        dxml.WriteAttributeString("id", "" + i);
+                        dxml.WriteElementString("empresa", experi.GetTbEmpresa());
+                        dxml.WriteElementString("cargo", experi.GetTbCargo());
+                        dxml.WriteElementString("inicio", experi.GetDateInicio());
+                        if (experi.GetCheckOption() == true) {
+                            dxml.WriteElementString("conclusao", experi.GetDateConclusao());
+                            dxml.WriteElementString("option", "" + experi.GetCheckOption());
+                            dxml.WriteEndElement();
+                        } else {
+                            dxml.WriteElementString("conclusao", "");
+                            dxml.WriteElementString("option", "" + experi.GetCheckOption());
+                            dxml.WriteEndElement();
+                        }
+                    } else {
+                        res += (i + 1) + "º experiencia\n";
+                    }
+                    i++;
+                }
+                if (res != "") {
+                    MessageBox.Show(String.Format("Os elementos a seguir possuem alguma informação em branco e não foram salvos:\n{0}O restante foi salvo!", res),
+                        "Aviso", MessageBoxButton.OK, MessageBoxImage.Information);
+                } else MessageBox.Show("Salvo", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                dxml.WriteFullEndElement();
+                dxml.Close();
+            } catch (Exception ex) {
+                MessageBox.Show("Erro ao Guardar XML: " + ex.Message, "Erro!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void GetCurriculoXML(string url, PerfilPessoa pp) {
+            XmlDocument xml = new XmlDocument();
+            try {
+                xml.Load(url);
+            } catch {
+                XmlTextWriter dxml = new XmlTextWriter(url, null);
+                dxml.WriteStartDocument();
+                dxml.WriteStartElement("CURRICULO");
+                dxml.WriteFullEndElement();
+                dxml.Close();
+                xml.Load(url);
+            }
+            XmlNodeList x = xml.GetElementsByTagName("CARACTERISTICAS");
+            pp.SetCaracteristicas(x[0]["atuacao"].InnerText, x[0]["especificacao"].InnerText, x[0]["escolaridade"].InnerText);
+            x = xml.GetElementsByTagName("CURSOS");
+            for (int i = 0; i < x.Count; i++) {
+                UcFormEspecCurso y = pp.GetUcCursoTop();
+                y.SetDadosCurso(x[i]["descricao"].InnerText, x[i]["instituicao"].InnerText, x[i]["nivel"].InnerText, x[i]["inicio"].InnerText, x[i]["conclusao"].InnerText);
+                if ((i + 1) < x.Count) {
+                    pp.SetCursoConteiner();
+                    pp.CurriculoFormOut.Height += 180;
+                }
+            }
+            x = xml.GetElementsByTagName("FERRAMENTAS");
+            for (int i = 0; i < x.Count; i++) {
+                UcFormEspecFerram y = pp.GetUcFerramTop();
+                y.SetDadosFerramentas(x[i]["ferramenta"].InnerText, x[i]["nivel"].InnerText);
+                if ((i + 1) < x.Count) {
+                    pp.SetFerramConteiner();
+                    pp.CurriculoFormOut.Height += 90;
+                    pp.gridspliter1.Height = new GridLength(pp.gridspliter1.Height.Value + 90);
+                }
+            }
+            x = xml.GetElementsByTagName("IDIOMAS");
+            for (int i = 0; i < x.Count; i++) {
+                UcFormEspecIdioma y = pp.GetUcIdiomaTop();
+                y.SetDadosIdioma(x[i]["idioma"].InnerText, x[i]["nivel"].InnerText);
+                if ((i + 1) < x.Count) {
+                    pp.SetFerramConteiner();
+                    pp.CurriculoFormOut.Height += 90;
+                    pp.gridspliter1.Height = new GridLength(pp.gridspliter1.Height.Value + 90);
+                }
+            }
+            x = xml.GetElementsByTagName("EXPERIENCIAS");
+            for (int i = 0; i < x.Count; i++) {
+                UcFormExperiencia y = pp.GetUcExperiTop();
+                y.SetDadosExperiencia(x[i]["empresa"].InnerText, x[i]["cargo"].InnerText,
+                    x[i]["inicio"].InnerText, x[i]["conclusao"].InnerText, x[i]["option"].InnerText);
+                if ((i + 1) < x.Count) {
+                    pp.SetFerramConteiner();
+                    pp.CurriculoFormOut.Height += 90;
+                    pp.gridspliter1.Height = new GridLength(pp.gridspliter1.Height.Value + 90);
+                }
+            }
+        }
+
+        public void WriteArray(string[,] d, string eleFilho, XmlTextWriter xml) {
+            if (d.Length / 2 > 0) {
+                for (int j = 0; j < d.Length / 2; j++) {
+                    xml.WriteStartElement(eleFilho);
+                    xml.WriteAttributeString("desc", d[j, 0]);
+                    xml.WriteAttributeString("nivel", d[j, 1]);
+                    xml.WriteEndElement();
+                }
+            } else {
+                xml.WriteStartElement(eleFilho);
+                xml.WriteAttributeString("desc", "");
+                xml.WriteAttributeString("nivel", "");
+                xml.WriteEndElement();
+            }
+        }
+        public void WriteArray(string[] d, string eleFilho, XmlTextWriter xml) {
+            if (d.Length > 0) {
+                for (int j = 0; j < d.Length; j++) {
+                    xml.WriteStartElement(eleFilho);
+                    xml.WriteAttributeString("desc", d[j]);
+                    xml.WriteEndElement();
+                }
+            } else {
+                xml.WriteStartElement(eleFilho);
+                xml.WriteAttributeString("desc", "");
+                xml.WriteEndElement();
+            }
+        }
+
+        public void SetPostagemXml(ArrayList posts) {
+            XmlTextWriter dxml = new XmlTextWriter(@".\Contas\postagens.xml", null);
+            try {
+                dxml.WriteStartDocument();
+                dxml.Formatting = Formatting.Indented;
+                dxml.WriteStartElement("POSTAGENS");
+                int i = 0;
+                foreach (var ele in posts) {
+                    Postagem p = (Postagem) ele;
+                    dxml.WriteStartElement("POST");
+                    dxml.WriteAttributeString("id", "" + i);
+                    dxml.WriteElementString("tipo", "" + p.Tipo);
+                    dxml.WriteElementString("data", p.Data);
+                    dxml.WriteElementString("hora", p.Hora);
+                    dxml.WriteElementString("usuario", p.Usuario);
+                    dxml.WriteElementString("nome", p.Nome);
+                    dxml.WriteElementString("endereco", p.CompEndereco);
+                    dxml.WriteElementString("cargo", p.Cargo);
+                    dxml.WriteElementString("numero", p.NumVagas);
+                    dxml.WriteElementString("desejavel", "" + p.Desejavel);
+                    if (p.Desejavel == true) {
+                        dxml.WriteStartElement("DESEJAVEL");
+                        WriteArray(p.DesCur, "curso", dxml);
+                        WriteArray(p.DesFer, "ferramenta", dxml);
+                        WriteArray(p.DesIdi, "idioma", dxml);
+                        WriteArray(p.DesExp, "experiencia", dxml);
+                        dxml.WriteEndElement();
+                    }
+                    dxml.WriteElementString("necessario", "" + p.Necessario);
+                    if (p.Necessario == true) {
+                        dxml.WriteStartElement("NECESSARIO");
+                        WriteArray(p.NesCur, "curso", dxml);
+                        WriteArray(p.NesFer, "ferramenta", dxml);
+                        WriteArray(p.NesIdi, "idioma", dxml);
+                        WriteArray(p.NesExp, "experiencia", dxml);
+                        dxml.WriteEndElement();
+                    }
+                    dxml.WriteEndElement();
+                    if(p.Inscritos.Count > 0) {
+                        dxml.WriteStartElement("INSCRITOS");
+                        foreach(var ment in p.Inscritos) {
+                            dxml.WriteStartElement("user");
+                            dxml.WriteAttributeString("id", ment.ToString());
+                            dxml.WriteEndElement();
+                        }
+                    }
+                }
+                dxml.WriteFullEndElement();
+                dxml.Close();
+            } catch (Exception ex) {
+                dxml.Close();
+                MessageBox.Show(String.Format("Erro ao Guardar XML: {0}\nOrigem: {1}", ex.Message, ex.Source),
+                    "Erro!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void GetRequisitos(string[,] d, XmlReader x, string info) {
+            int i = 0;
+            while (x.ReadToFollowing(info)) {
+                d[i, 0] = x.GetAttribute("desc");
+                d[i, 0] = x.GetAttribute("nivel");
+                i++;
+            }
+        }
+
+        public void GetRequisitos(string[] d, XmlReader x, string info) {
+            int i = 0;
+            while (x.ReadToFollowing(info)) {
+                d[i] = x.GetAttribute("desc");
+                i++;
+            }
+        }
+
+        public void GetPostagemXml(ArrayList array) {
+            XmlReader xml = XmlReader.Create(@".\Contas\postagens.xml");
+            while (xml.ReadToFollowing("POST")) {
+                Postagem post = new Postagem();
+                xml.ReadToFollowing("data");
+                post.Data = xml.ReadElementContentAsString();
+                xml.ReadToFollowing("hora");
+                post.Hora = xml.ReadElementContentAsString();
+                xml.ReadToFollowing("usuario");
+                post.Usuario = xml.ReadElementContentAsString();
+                xml.ReadToFollowing("nome");
+                post.Nome = xml.ReadElementContentAsString();
+                xml.ReadToFollowing("endereco");
+                post.CompEndereco = xml.ReadElementContentAsString();
+                xml.ReadToFollowing("cargo");
+                post.Cargo = xml.ReadElementContentAsString();
+                xml.ReadToFollowing("numero");
+                post.NumVagas = xml.ReadElementContentAsString();
+
+                xml.ReadToFollowing("desejavel");
+                if(xml.ReadElementContentAsString() == "True")
+                    post.Desejavel = true;
+                else
+                    post.Desejavel = false;
+                if (post.Desejavel == true) {
+                    xml.ReadToFollowing("DESEJAVEL");
+                    GetRequisitos(post.DesCur, xml, "curso");
+                    GetRequisitos(post.DesFer, xml, "ferramenta");
+                    GetRequisitos(post.DesIdi, xml, "idioma");
+                    GetRequisitos(post.DesExp, xml, "experiencia");
+                }
+
+                xml.ReadToFollowing("necessario");
+                if (xml.ReadElementContentAsString() == "True")
+                    post.Necessario = true;
+                else
+                    post.Necessario = false;
+                if (post.Necessario == true) {
+                    xml.ReadToFollowing("NECESSARIO");
+                    GetRequisitos(post.DesCur, xml, "curso");
+                    GetRequisitos(post.DesFer, xml, "ferramenta");
+                    GetRequisitos(post.DesIdi, xml, "idioma");
+                    GetRequisitos(post.DesExp, xml, "experiencia");
+                }
+                array.Add(post);
+            }
         }
     }
 }

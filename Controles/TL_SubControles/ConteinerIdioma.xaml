@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="awtj.Controles.TL_SubControles.ConteinerIdioma"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:awtj.Controles.TL_SubControles"
+             mc:Ignorable="d" 
+             d:DesignHeight="298" d:DesignWidth="470">
+    <Grid>
+        <Label Content="Idioma:" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="25"/>
+        <TextBox x:Name="TbIdioma" Height="25" Margin="94,0,45,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" TabIndex="0"/>
+        <Label Content="Proficiência:" HorizontalAlignment="Left" Margin="40,45,0,0" VerticalAlignment="Top" Height="25"/>
+        <ComboBox x:Name="CmbNivel" Margin="118,45,0,0" VerticalAlignment="Top" Height="25" FontFamily="Calibri" FontSize="16" SelectedIndex="0" HorizontalAlignment="Left" Width="120" TabIndex="1">
+            <ComboBoxItem Content="Básico"/>
+            <ComboBoxItem Content="Intermediário"/>
+            <ComboBoxItem Content="Avançado"/>
+            <ComboBoxItem Content="Fluente"/>
+        </ComboBox>
+        <Button x:Name="AddButton" Content="Adicionar" HorizontalAlignment="Left" Margin="243,45,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ConfirmarStyle}" BorderBrush="White" Foreground="White" Click="AddButton_Click"/>
+        <Button x:Name="RemButton" Content="Remover" Margin="323,45,0,0" VerticalAlignment="Top" Style="{DynamicResource ConfirmarStyle}" BorderBrush="White" Foreground="White" Click="RemButton_Click" HorizontalAlignment="Left" Width="75"/>
+        <Label Content="Lista de Idiomas" HorizontalAlignment="Left" Margin="40,92,0,0" Height="26" VerticalAlignment="Top"/>
+        <Separator Height="26" Margin="140,92,45,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="List" Margin="40,123,45,20"/>
+
+    </Grid>
+</UserControl>
