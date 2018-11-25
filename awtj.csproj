@@ -67,8 +67,14 @@
     <Compile Include="ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\FormPerfilEmpresa.xaml.cs">
+      <DependentUpon>FormPerfilEmpresa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\FormPerfilPessoa.xaml.cs">
       <DependentUpon>FormPerfilPessoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\FormTimeLine.xaml.cs">
+      <DependentUpon>FormTimeLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\SubControles\UcFormEmpresa.xaml.cs">
       <DependentUpon>UcFormEmpresa.xaml</DependentUpon>
@@ -88,16 +94,40 @@
     <Compile Include="Controles\SubControles\UcFormPessoa.xaml.cs">
       <DependentUpon>UcFormPessoa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\TL_SubControles\ConteinerCurso.xaml.cs">
+      <DependentUpon>ConteinerCurso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TL_SubControles\ConteinerExperi.xaml.cs">
+      <DependentUpon>ConteinerExperi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TL_SubControles\ConteinerFerram.xaml.cs">
+      <DependentUpon>ConteinerFerram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TL_SubControles\ConteinerIdioma.xaml.cs">
+      <DependentUpon>ConteinerIdioma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TL_SubControles\MetodosConteiner.cs" />
+    <Compile Include="Controles\TL_SubControles\FormPostar.xaml.cs">
+      <DependentUpon>FormPostar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TL_SubControles\PostViewer.xaml.cs">
+      <DependentUpon>PostViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TL_SubControles\Requisitos.xaml.cs">
+      <DependentUpon>Requisitos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\UcRedefinir.xaml.cs">
       <DependentUpon>UcRedefinir.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\UcRegistrar.xaml.cs">
       <DependentUpon>UcRegistrar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Curriculo.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="ListaEmpresas.cs" />
     <Compile Include="ListaPessoas.cs" />
     <Compile Include="Pessoa.cs" />
+    <Compile Include="Postagem.cs" />
     <Compile Include="Restricoes.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="XmlMetodos.cs" />
@@ -109,7 +139,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controles\FormPerfilEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controles\FormPerfilPessoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\FormTimeLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +172,34 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\SubControles\UcFormPessoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\ConteinerCurso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\ConteinerExperi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\ConteinerFerram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\ConteinerIdioma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\FormPostar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\PostViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\TL_SubControles\Requisitos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,11 +17,12 @@ namespace awtj.Controles {
         private UcFormEspecIdioma fei;
         private UcFormExperiencia fee;
         private ClientWindow CliWin;
+        private PerfilPessoa PerPessoa;
 
-        private Stack pilha_fec = new Stack();
-        private Stack pilha_fef = new Stack();
-        private Stack pilha_fei = new Stack();
-        private Stack pilha_fee = new Stack();
+        private ArrayList array_fec = new ArrayList();
+        private ArrayList array_fef = new ArrayList();
+        private ArrayList array_fei = new ArrayList();
+        private ArrayList array_fee = new ArrayList();
         private ListaPessoas listp;
         private ListaEmpresas liste;
 
@@ -50,10 +51,37 @@ namespace awtj.Controles {
             SetImage(dados[16]);
         }
 
+        public void SetPerfilPessoa(PerfilPessoa pp) {
+            PerPessoa = pp;
+            xml.GetCurriculoXML(dados[13], PerPessoa);
+        }
+
+        public void SetCaracteristicas(string atu, string esp, string esc) {
+            TbAtuacao.Text = atu;
+            TbEspecificacao.Text = esp;
+            SetCombo(esc, CmbEscolaridade);
+        }
+
+        public string[] GetCaracteristicas() {
+            string[] d = new string[3];
+            d[0] = TbAtuacao.Text;
+            d[1] = TbEspecificacao.Text;
+            d[2] = CmbEscolaridade.Text;
+            return d;
+        }
+
         private void SetInfo() {
+            if (dados[5].Contains("_") == false && dados[5] != "") {
+                ChkTel2.IsChecked = true;
+                MskTel2.IsEnabled = true;
+                if (dados[6].Contains("_") == false && dados[6] != "") {
+                    ChkTel3.IsChecked = true;
+                    MskTel3.IsEnabled = true;
+                }
+            }
             TbNome.Text = dados[2]; TbSobrenome.Text = dados[3];
             MskTel1.Value = dados[4]; MskTel2.Value = dados[5]; MskTel3.Value = dados[6];
-            TbCEP.Text = dados[7]; TbCidade.Text = dados[8]; SetEstado(dados[9]);
+            TbCEP.Text = dados[7]; TbCidade.Text = dados[8]; SetCombo(dados[9], CmbEstado);
             TbBairro.Text = dados[12]; TbEndereco.Text = dados[10]; TbNumero.Text = dados[11];
             DateTime data = DateTime.Parse(dados[19]);
             DtpData.SelectedDate = data;
@@ -61,79 +89,98 @@ namespace awtj.Controles {
         }
 
         private void SetListaXML() {
+            if (MskTel2.EnteredValue.Contains("_")) {
+                MskTel2.Clear();
+            }
+            if (MskTel3.EnteredValue.Contains("_")) {
+                MskTel3.Clear();
+            }
             listp.SetUserData(Indice, TbNome.Text, TbSobrenome.Text, MskTel1.EnteredValue,
                 MskTel2.EnteredValue, MskTel3.EnteredValue, TbCEP.Text, TbCidade.Text,
                 CmbEstado.Text, TbEndereco.Text, TbNumero.Text, TbBairro.Text, dados[16],
                 TbFacebook.Text, TbLinkedin.Text, DtpData.SelectedDate.Value.ToShortDateString());
             xml.GuardarXml(listp, liste);
             dados = listp.GetUserData(Indice);
-            CliWin.SetButtons(dados[2], dados[16]);
+            CliWin.SetButtons(dados[2] + " " + dados[3], dados[16]);
         }
 
         private void SetUcCurso() {
-            this.fec = new UcFormEspecCurso() {
+            fec = new UcFormEspecCurso() {
                 Margin = new Thickness(0, mgCurso, 0, 0)
             };
-            pilha_fec.Push(fec);
+            array_fec.Add(fec);
             mgCurso += 180;
         }
 
         private void SetUcFerramenta() {
-            this.fef = new UcFormEspecFerram() {
+            fef = new UcFormEspecFerram() {
                 Margin = new Thickness(0, mgFerram, 0, 0)
             };
-            pilha_fef.Push(fef);
+            array_fef.Add(fef);
             mgFerram += 90;
         }
 
         private void SetUcIdioma() {
-            this.fei = new UcFormEspecIdioma() {
+            fei = new UcFormEspecIdioma() {
                 Margin = new Thickness(0, mgIdioma, 0, 0)
             };
-            pilha_fei.Push(fei);
+            array_fei.Add(fei);
             mgIdioma += 90;
         }
 
         private void SetUcExperiencia() {
-            this.fee = new UcFormExperiencia() {
+            fee = new UcFormExperiencia() {
                 Margin = new Thickness(0, mgExperi, 0, 0)
             };
-            pilha_fee.Push(fee);
+            array_fee.Add(fee);
             mgExperi += 180;
         }
 
-        private UcFormEspecCurso GetUcCursoTop() {
-            return (UcFormEspecCurso) pilha_fec.Peek();
+        public UcFormEspecCurso GetUcCursoTop() {
+            return (UcFormEspecCurso) array_fec[array_fec.Count - 1];
         }
 
-        private UcFormEspecFerram GetUcFerramTop() {
-            return (UcFormEspecFerram) pilha_fef.Peek();
+        public UcFormEspecFerram GetUcFerramTop() {
+            return (UcFormEspecFerram) array_fef[array_fef.Count - 1];
         }
 
-        private UcFormEspecIdioma GetUcIdiomaTop() {
-            return (UcFormEspecIdioma) pilha_fei.Peek();
+        public UcFormEspecIdioma GetUcIdiomaTop() {
+            return (UcFormEspecIdioma) array_fei[array_fei.Count - 1];
         }
 
-        private UcFormExperiencia GetUcExperiTop() {
-            return (UcFormExperiencia) pilha_fee.Peek();
+        public UcFormExperiencia GetUcExperiTop() {
+            return (UcFormExperiencia) array_fee[array_fee.Count - 1];
         }
 
-        private void SetCursoConteiner() {
+        public UcFormEspecCurso UcFormEspecCurso() {
+            return fec;
+        }
+        public UcFormEspecFerram UcFormEspecFerram() {
+            return fef;
+        }
+        public UcFormEspecIdioma UcFormEspecIdioma() {
+            return fei;
+        }
+        public UcFormExperiencia GetUcFormExperiencia() {
+            return fee;
+        }
+
+        public void SetCursoConteiner() {
             SetUcCurso();
             curso_conteiner.Children.Add(GetUcCursoTop());
         }
 
-        private void SetFerramConteiner() {
+        public void SetFerramConteiner() {
             SetUcFerramenta();
             ferram_conteiner.Children.Add(GetUcFerramTop());
         }
 
-        private void SetIdiomaConteiner() {
+        public void SetIdiomaConteiner() {
             SetUcIdioma();
             idioma_conteiner.Children.Add(GetUcIdiomaTop());
         }
 
-        private void SetExperiConteiner() {
+        public void SetExperiConteiner() {
             SetUcExperiencia();
             experi_conteiner.Children.Add(GetUcExperiTop());
         }
@@ -190,10 +237,10 @@ namespace awtj.Controles {
             }
         }
 
-        private void SetEstado(string est) {
-            for (int i = 0; i < CmbEstado.Items.Count; i++) {
-                CmbEstado.SelectedIndex = i;
-                if (CmbEstado.SelectedItem.ToString().Contains(est)) {
+        private void SetCombo(string est, ComboBox box) {
+            for (int i = 0; i < box.Items.Count; i++) {
+                box.SelectedIndex = i;
+                if (box.SelectedItem.ToString().Contains(est)) {
                     break;
                 }
             }
@@ -242,12 +289,16 @@ namespace awtj.Controles {
 
         private void ChkTel2_Unchecked(object sender, RoutedEventArgs e) {
             MskTel2.IsEnabled = false;
-            MskTel2.Clear();
+            if (MskTel2.EnteredValue.Contains("_")) {
+                MskTel2.Clear();
+            }
         }
 
         private void ChkTel3_Unchecked(object sender, RoutedEventArgs e) {
             MskTel3.IsEnabled = false;
-            MskTel3.Clear();
+            if (MskTel3.EnteredValue.Contains("_")) {
+                MskTel3.Clear();
+            }
         }
 
         private void TbNome_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
@@ -260,6 +311,10 @@ namespace awtj.Controles {
 
         private void TbCEP_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
             restr.RestrNumero(TbCEP.Text, 8, e);
+        }
+
+        private void SalvarCurri_Click(object sender, RoutedEventArgs e) {
+            xml.SetCurriculoXML(dados[0], GetCaracteristicas(), array_fec, array_fef, array_fei, array_fee);
         }
     }
 }

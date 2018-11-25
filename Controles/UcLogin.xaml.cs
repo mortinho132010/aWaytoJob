@@ -45,6 +45,7 @@ namespace awtj.Controles {
                 } else {
                     Application.Current.MainWindow.Hide();
                     SetClient(Convert.ToInt32(res[0]), res[1]);
+                    c.SetClient(GetClient());
                     c.Show();
                 }
             }

@@ -1,5 +1,9 @@
 ﻿namespace awtj {
     class Empresa : Usuario {
+
+        public Empresa Next { set; get; }
+        public string Cnpj { set; get; }
+
         public Empresa(string usu, string sen, string nom, string tel,
             string tel1, string tel2, string cep, string cid,
             string est, string end, string num, string bai,
@@ -24,12 +28,13 @@
             Facebook = fac;
             Linkedin = lin;
             Data = data;
+            conexoes = new System.Collections.ArrayList();
             Next = null;
         }
 
-        public void Alterar(string nom, string tel, string tel1,
+        public void Alterar(string nom, string tel, string tel1, 
             string tel2, string cep, string cid, string est,
-            string end, string num, string bai, string img,
+            string end, string num, string bai, string cnp, string img,
             string fac, string lin, string data) {
             Nome = nom;
             Telefone = new string[3];
@@ -42,12 +47,19 @@
             Endereco = end;
             Numero = num;
             Bairro = bai;
+            Cnpj = cnp;
             ImgDestino = img;
             Facebook = fac;
             Linkedin = lin;
             Data = data;
         }
-        public Empresa Next { set; get; }
-        public string Cnpj { set; get; }
+
+        public void AdicionarConxeao(object post) {
+            conexoes.Add(post);
+        }
+
+        public void RemoverPostagem(object post) {
+            conexoes.Remove(post);
+        }
     }
 }

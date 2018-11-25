@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="awtj.Controles.FormTimeLine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:awtj.Controles"
+             mc:Ignorable="d" 
+             d:DesignHeight="674" d:DesignWidth="610" Width="Auto" Height="Auto">
+    <UserControl.Resources>
+        <Storyboard x:Key="Stage1">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="TlViewer">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="0,630,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ExpandButton">
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="97.097,595,97.185,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="TlConteiner">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="495"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Stage2">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="TlViewer">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0,630,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="0,145,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ExpandButton">
+                <EasingThicknessKeyFrame KeyTime="0" Value="97.097,595,97.185,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="97.097,110,97.185,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="TlConteiner">
+                <EasingDoubleKeyFrame KeyTime="0" Value="495"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="10"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="162*"/>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="TlViewer" Margin="0,145,0,0" Grid.ColumnSpan="4"/>
+        <Grid x:Name="TlConteiner" Grid.ColumnSpan="4" Margin="0,90,0,0" VerticalAlignment="Top" Height="10"/>
+        <RadioButton Content="Feed de Vagas" Margin="20,20,0,0" VerticalAlignment="Top" Style="{DynamicResource TimeLineButton}" Foreground="White" Checked="RadioButton_Checked" IsChecked="True"/>
+        <RadioButton Content="Visão de Mapa" Margin="0,20,0,0" VerticalAlignment="Top" Style="{DynamicResource TimeLineButton}" Grid.Column="1" Foreground="White"/>
+        <RadioButton Content="Rank de Vagas" Margin="0,20,0,0" VerticalAlignment="Top" Style="{DynamicResource TimeLineButton}" Grid.Column="2" Foreground="White"/>
+        <RadioButton Content="Pesquisar" Margin="0,20,20,0" VerticalAlignment="Top" Style="{DynamicResource TimeLineButton}" Grid.Column="3" Foreground="White"/>
+        <CheckBox x:Name="ExpandButton" Content="Postar" Grid.Column="1" Margin="97.097,110,97.185,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Style="{DynamicResource ExpandButton2}" Height="25" Background="Black" Foreground="White" BorderBrush="#FF494949" HorizontalAlignment="Center" Checked="ExpandButton_Checked" Unchecked="ExpandButton_Unchecked" IsChecked="True"/>
+    </Grid>
+</UserControl>

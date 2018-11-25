@@ -32,6 +32,21 @@ namespace awtj {
             return count;
         }
 
+        public void SetUserData(int indice, string nom, string cnp, string tel,
+            string tel1, string tel2, string cep, string cid,
+            string est, string end, string num, string bai,
+            string img, string fac, string lin, string data) {
+            Empresa aux = head;
+            if (Size() > indice) {
+                for (int i = 0; i < indice; i++) {
+                    aux = aux.Next;
+                }
+                aux.Alterar(nom, tel, tel1, tel2, cep, cid, est, end, num, bai, cnp, img, fac, lin, data);
+            } else {
+                MessageBox.Show("AlterarCadastro(): Índice Inexistente", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         public string[] GetUserData(int indice) {
             Empresa aux = head;
             string[] strings = new string[18];
@@ -58,12 +73,12 @@ namespace awtj {
                 strings[16] = aux.Linkedin;
                 strings[17] = aux.Data;
             } else {
-                MessageBox.Show("GetUserData(): Índice Inexistente", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(string.Format("GetUserData(): Índice Inexistente:\nInserido: {0}\nTamanho: {1}", indice, Size()), "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return strings;
         }
 
-        public string[,] getAll() {
+        public string[,] GetAll() {
             Empresa aux = head;
             string[,] strings = new string[Size(), 18];
             for (int i = 0; i < Size(); i++) {

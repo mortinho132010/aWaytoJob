@@ -7,16 +7,24 @@
              xmlns:viblendEditors="clr-namespace:VIBlend.WPF.Controls;assembly=VIBlend.WPF.Editors" x:Class="awtj.Controles.SubControles.UcFormEspecCurso"
              mc:Ignorable="d" 
              d:DesignHeight="180" d:DesignWidth="473" Height="Auto" VerticalAlignment="Top">
-    <Grid>
-        <Label Content="Curso:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="Inicio em: (mm/aaaa)" HorizontalAlignment="Left" Margin="40,110,0,0" Height="25" VerticalAlignment="Top"/>
-
-        <viblendEditors:MaskEditor HorizontalAlignment="Left" Height="25" Margin="193,110,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="64" Mask="99/9999" FontFamily="Calibri" FontSize="16"/>
-        <Label Content="Conclusão em: (mm/aaaa)" HorizontalAlignment="Left" Margin="40,155,0,0" VerticalAlignment="Top" Height="25"/>
-        <viblendEditors:MaskEditor HorizontalAlignment="Left" Height="25" Margin="193,155,0,0" TextWrapping="Wrap" Text="MaskEditor" VerticalAlignment="Top" Width="64" Mask="99/9999" FontFamily="Calibri" FontSize="16"/>
+    <Grid x:Name="conteiner">
+        <Label Content="Descrição:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="Inicio em:" HorizontalAlignment="Left" Margin="40,110,0,0" Height="25" VerticalAlignment="Top"/>
+        <Label Content="Conclusão em:" HorizontalAlignment="Left" Margin="40,155,0,0" VerticalAlignment="Top" Height="25"/>
         <Label Content="Instituição:" HorizontalAlignment="Left" Margin="40,65,0,0" VerticalAlignment="Top" Height="25"/>
-        <TextBox Height="25" Margin="112,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
-        <TextBox Height="25" Margin="112,65,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16"/>
+        <TextBox x:Name="TbCurso" Height="25" Margin="112,20,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" GotFocus="TbCurso_GotFocus" LostFocus="TbCurso_LostFocus" TabIndex="0"/>
+        <TextBox x:Name="TbInstituicao" Height="25" Margin="112,65,40,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" GotFocus="TbInstituicao_GotFocus" LostFocus="TbInstituicao_LostFocus" TabIndex="1"/>
+        <Label Content="Nível:" HorizontalAlignment="Left" Margin="261,110,0,0" Height="25" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CmbNivel" HorizontalAlignment="Left" Margin="305,110,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectedIndex="0" FontFamily="Calibri" FontSize="16" TabIndex="4">
+            <ComboBoxItem Content="Técnico"/>
+            <ComboBoxItem Content="Bacharel"/>
+            <ComboBoxItem Content="Licenciatura"/>
+            <ComboBoxItem Content="Tecnologo"/>
+            <ComboBoxItem Content="Mestrado"/>
+            <ComboBoxItem Content="Doutorado"/>
+        </ComboBox>
+        <viblendEditors:DateTimePicker x:Name="DateInicio" HorizontalAlignment="Left" Margin="137,110,0,0" VerticalAlignment="Top" DefaultDateTimeFormat="YearMonthPattern" Height="25" Culture="(Default)" TabIndex="2"/>
+        <viblendEditors:DateTimePicker x:Name="DateConclusao" HorizontalAlignment="Left" Margin="137,155,0,0" VerticalAlignment="Top" DefaultDateTimeFormat="YearMonthPattern" Height="25" Culture="(Default)" TabIndex="3"/>
 
     </Grid>
 </UserControl>

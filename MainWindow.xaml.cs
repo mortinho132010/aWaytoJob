@@ -61,7 +61,8 @@ namespace awtj {
                     if (x.BuscarCep(x.TextBoxCEP()) == true && x.VerificarCampos() == true && x.VerificarSenhas() == true) {
                         listaPessoas.Cadastrar(x.TextBoxUsuario(), x.TextConfirma(), x.TextBoxNome(), "",
                             x.TextBoxTelefone(), "", "", x.TextBoxCEP(), x.Cidade, x.Estado, x.Endereco,
-                            "", x.Bairro, "", x.TextBoxEmail(), x.RadioSelected(), @".\Images\SystemIcons\UserDefault.jpg", "", "", x.Date());
+                            "", x.Bairro, @".\Curriculos\" + x.TextBoxUsuario() + ".xml", x.TextBoxEmail(), x.RadioSelected(),
+                            @".\Images\SystemIcons\UserDefault.jpg", "", "", x.Date());
                         xmlMet.GuardarXml(listaPessoas, listaEmpresas);
                         MessageBox.Show("'" + x.TextBoxUsuario() + "' Foi cadastrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                         x.Clear();
@@ -77,9 +78,9 @@ namespace awtj {
                             x.TextBoxTelefone(), "", "", x.TextBoxCEP(), x.Cidade, x.Estado, x.Endereco, "",
                             x.Bairro, x.TextBoxEmail(), x.TextBoxCnpj(), @".\Images\SystemIcons\UserDefault.jpg", "", "", x.Date());
                         xmlMet.GuardarXml(listaPessoas, listaEmpresas);
-                        MessageBox.Show("'"+x.TextBoxUsuario() + "' Foi cadastrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("'" + x.TextBoxUsuario() + "' Foi cadastrado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
                         x.Clear();
-                        FormLogin();
+                        Estado1();
                     } else {
                         MessageBox.Show("Não deixe nenhum campo em branco, e verifique se o CEP é válido",
                             "Verifique os campos!", MessageBoxButton.OK, MessageBoxImage.Information);

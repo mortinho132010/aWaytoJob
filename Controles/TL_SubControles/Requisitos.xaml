@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="awtj.Controles.TL_SubControles.Requisitos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:awtj.Controles.TL_SubControles"
+             mc:Ignorable="d" 
+             d:DesignHeight="318" d:DesignWidth="610">
+    <Grid>
+        <Grid x:Name="ReqConteiner" Margin="140,20,0,0"/>
+
+        <RadioButton x:Name="RdCurso" Content="Cursos:" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top" Height="15" Checked="RdCurso_Checked" IsChecked="True"/>
+        <RadioButton x:Name="RdFerramenta" Content="Ferramentas:" HorizontalAlignment="Left" Margin="40,55,0,0" VerticalAlignment="Top" Height="15" Checked="RdFerramenta_Checked"/>
+        <RadioButton x:Name="RdIdioma" Content="Idiomas:" HorizontalAlignment="Left" Margin="40,90,0,0" VerticalAlignment="Top" Height="15" Checked="RdIdioma_Checked"/>
+        <RadioButton x:Name="RdExperiencia" Content="Experiência:" HorizontalAlignment="Left" Margin="40,125,0,0" VerticalAlignment="Top" Height="15" Checked="RdExperiencia_Checked"/>
+
+    </Grid>
+</UserControl>

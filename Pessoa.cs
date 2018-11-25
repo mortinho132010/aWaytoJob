@@ -1,5 +1,10 @@
 ﻿namespace awtj {
     class Pessoa : Usuario {
+        public Pessoa Next { set; get; }
+        public string Sobrenome { set; get; }
+        public string Genero { set; get; }
+        public string DirCurriculo { set; get; }
+
         public Pessoa(string usu, string sen, string nom, string sob, string tel,
             string tel1, string tel2, string cep, string cid,
             string est, string end, string num, string bai,
@@ -26,6 +31,7 @@
             Facebook = fac;
             Linkedin = lin;
             Data = data;
+            conexoes = new System.Collections.ArrayList();
             Next = null;
         }
         public void Alterar(string nom, string sob, string tel,
@@ -49,9 +55,13 @@
             Linkedin = lin;
             Data = data;
         }
-        public Pessoa Next { set; get; }
-        public string Sobrenome { set; get; }
-        public string Genero { set; get; }
-        public string DirCurriculo { set; get; }
+
+        public void AdicionarConexao(object post) {
+            conexoes.Add(post);
+        }
+
+        public void RemoverConexao(object post) {
+            conexoes.Remove(post);
+        }
     }
 }
